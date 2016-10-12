@@ -1,0 +1,17 @@
+<% header "#{resource_name.to_s.humanize} Profile" %>
+
+<div class="row">
+  <div class="col-lg-2"><strong>Name</strong></div>
+  <div class="col-lg-10">
+    <%= @user.name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-2"><strong>Email</strong></div>
+  <div class="col-lg-10">
+    <%= @user.email %>
+  </div>
+</div>
+
+<%= button_to "Edit profile", edit_user_registration_path, 
+              class: 'btn btn-primary', method: :get %>
