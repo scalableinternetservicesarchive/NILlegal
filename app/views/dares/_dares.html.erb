@@ -1,0 +1,7 @@
+<li id="dare-<%= dare.id %>">
+  <span class="user"><%= link_to dare.user.name, dare.user %></span>
+  <span class="description"><%= dare.description %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(dare.created_at) %> ago.
+  </span>
+</li>
