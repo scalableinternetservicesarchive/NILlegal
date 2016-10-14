@@ -15,9 +15,8 @@
   <% if @user.dares.any? %>
     <h3>Dares (<%= @user.dares.count %>)</h3>
     <ol class="dares">
-      <%= render @dares %>
+      <%= render partial: "dares/dares", locals: { dare: @user.dares.first } %>
     </ol>
-    <%= will_paginate @dares %>
   <% end %>
 </div>
 </div>
