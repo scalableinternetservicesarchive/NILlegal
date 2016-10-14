@@ -1,0 +1,2 @@
+class DaresController < ApplicationController
+end
