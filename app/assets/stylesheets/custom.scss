@@ -9,3 +9,11 @@
 .alert-notice {
   @extend .alert-info;
 }
+
+.panel-section {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #ededed;
+}
