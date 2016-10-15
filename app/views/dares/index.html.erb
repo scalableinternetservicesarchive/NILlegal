@@ -1,0 +1,9 @@
+<% header "Dares" %>
+
+<div class="panel panel-default panel-section">
+  <% if @dares.any? %>
+    <%= render partial: "dares/dares", locals: { dares: @dares } %>
+  <% else %>
+    <h3>No Dares Posted Yet</h3>
+  <% end %>
+</div>
