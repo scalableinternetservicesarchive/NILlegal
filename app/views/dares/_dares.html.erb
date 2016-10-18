@@ -1,11 +1,12 @@
-<ul class="dares">
-  <% dares.each do |dare| %>
-    <li id="dare-<%= dare.id %>">
-      <span class="user"><%= link_to dare.user.name, '#' %></span>
-      <span class="description"><%= dare.description %></span>
-      <span class="timestamp">
-        Posted <%= time_ago_in_words(dare.created_at) %> ago.
-      </span>
-    </li>
-  <% end %>
-</ul>
+<% dares.each do |dare| %>
+  <div id="dare-<%= dare.id %>" class="dare-summary">
+    <span class="title">
+      <strong><%= dare.title %></strong>
+    </span><br>
+    <p class="description"><%= dare.description %></p>
+    <span class="user"><%= link_to dare.user.name, '#' %></span>
+    <span class="timestamp text-muted">
+      posted <%= time_ago_in_words(dare.created_at) %> ago.
+    </span>
+  </div>
+<% end %>
