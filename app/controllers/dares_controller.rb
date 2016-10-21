@@ -22,6 +22,10 @@ class DaresController < ApplicationController
   def destroy
   end
   
+  def id
+    @dare = Dare.find_by(id: params[:id])
+  end
+  
   private
 
     def dare_params
