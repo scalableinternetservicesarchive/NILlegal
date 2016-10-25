@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe LandingPageController do
+  render_views
+
   describe 'GET index' do
     before do
       get :welcome
@@ -27,12 +29,15 @@ describe LandingPageController do
         get :welcome
       end
       
-      it 'displays post dare link' do
-        assert_template :welcome
+      it 'current_user is accessible' do
+        expect(controller.current_user).not_to be_nil
       end
     end
 
     context 'user not signed in' do
+      it 'current_user is not accessible' do
+        expect(controller.current_user).to be_nil
+      end
     end
   end
 end
