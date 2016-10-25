@@ -22,7 +22,7 @@ class DaresController < ApplicationController
   def destroy
   end
   
-  def id
+  def show
     @dare = Dare.find_by(id: params[:id])
   end
   
