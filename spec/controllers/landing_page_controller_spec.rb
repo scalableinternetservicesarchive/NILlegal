@@ -32,11 +32,19 @@ describe LandingPageController do
       it 'current_user is accessible' do
         expect(controller.current_user).not_to be_nil
       end
+
+      it 'displays a link to post a dare' do
+        assert_select 'a[href=?]', new_dare_path
+      end
     end
 
     context 'user not signed in' do
       it 'current_user is not accessible' do
         expect(controller.current_user).to be_nil
+      end
+
+      it 'displays a link to post a dare' do
+        assert_select 'a[href=?]', new_user_registration_path
       end
     end
   end
