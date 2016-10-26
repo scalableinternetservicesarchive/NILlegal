@@ -22,6 +22,17 @@ describe LandingPageController do
     it 'renders correct view' do
       assert_template :welcome
     end
+    
+    describe 'test layout links not dependent on user status' do
+    
+      it 'displays 2 links to go to landing page' do
+        assert_select 'a[href=?]', root_path, count: 2
+      end
+      
+      it 'displays a link to all the dares' do
+        assert_select 'a[href=?]', show_dare_list_path
+      end
+    end
 
     context 'user signed in' do
       before do
@@ -36,6 +47,15 @@ describe LandingPageController do
       it 'displays a link to post a dare' do
         assert_select 'a[href=?]', new_dare_path
       end
+      
+      it 'displays a link to profile' do
+        assert_select 'a[href=?]', show_user_registration_path
+      end
+      
+      it 'displays a link to sign out' do
+        assert_select 'a[href=?]', destroy_user_session_path
+      end
+      
     end
 
     context 'user not signed in' do
