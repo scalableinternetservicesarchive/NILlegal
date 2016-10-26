@@ -14,14 +14,20 @@
     </div>
   </div>
   <br>
+ 
   <%= button_to "Edit profile", edit_user_registration_path,
                 class: 'btn btn-primary', method: :get %>
+  <%= button_to "Post a Dare", new_dare_path,
+                class: 'btn btn-primary' , method: :get%>
+  
+                
+    
 </div>
 <div class="panel panel-default panel-section">
   <% if @user.dares.any? %>
-    <h3>Dares (<%= @user.dares.count %>)</h3>
+    <h3>Posted Dares (<%= @user.dares.count %>)</h3>
     <%= render partial: "dares/dares", locals: { dares: @user.dares } %>
   <% else %>
-    <h3>No dares posted yet</h3>
+    <h3>No Dares Posted Yet</h3>
   <% end %>
 </div>

@@ -1,0 +1,15 @@
+<% provide(:button_text, 'Post Dare') %>
+
+<%= form_for(@dare) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+ 
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'form-control' %>
+
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
