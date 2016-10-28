@@ -1,5 +1,9 @@
 <li id="dare_submission-<%= dare_submission.id %>">
 
-  <span class="content"><%= dare_submission.content %></span>
+
+    <div class="embed-container">  
+      <%= embed(dare_submission.content) %>
+    </div>  
+  
   
 </li>

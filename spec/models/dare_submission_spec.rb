@@ -22,8 +22,8 @@ RSpec.describe DareSubmission, type: :model do
   
   it "is valid with valid attributes" do
     user = FactoryGirl.create(:user)
-    dare = user.dares.build(title: "Test", description: "Test dare")
-    dare.save
+    dare = user.dares.create(title: "Test", description: "Test dare")
+    
     user2 = FactoryGirl.create(:user2)
     dare_sub = dare.dare_submissions.build(content: "test")
     user2.dare_submissions << dare_sub

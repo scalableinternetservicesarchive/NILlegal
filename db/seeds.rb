@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+user1 = User.create!(name:  "Example User",
+             email: "foo@bar.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+             
+user2 = User.create!(name:  "Example User",
+             email: "bar@foo.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+             
+             
+dare = user1.dares.create(title: "Test", description: "Test dare")
+
+dare_sub = dare.dare_submissions.build(content: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
+user2.dare_submissions << dare_sub
