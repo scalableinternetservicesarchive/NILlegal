@@ -14,14 +14,14 @@
     </div>
   </div>
   <br>
- 
+
   <%= button_to "Edit profile", edit_user_registration_path,
                 class: 'btn btn-primary', method: :get %>
   <%= button_to "Post a Dare", new_dare_path,
                 class: 'btn btn-primary' , method: :get%>
-  
-                
-    
+
+
+
 </div>
 <div class="panel panel-default panel-section-gray">
   <% if @user.dares.any? %>

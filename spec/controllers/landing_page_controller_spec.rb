@@ -49,7 +49,7 @@ describe LandingPageController do
       end
       
       it 'displays a link to profile' do
-        assert_select 'a[href=?]', show_user_registration_path
+        assert_select 'a[href=?]', current_user_profile_path
       end
       
       it 'displays a link to sign out' do

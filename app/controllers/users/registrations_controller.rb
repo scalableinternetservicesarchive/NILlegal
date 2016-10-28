@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/show
-  def show
+  def profile
     @user = current_user
   end
 
