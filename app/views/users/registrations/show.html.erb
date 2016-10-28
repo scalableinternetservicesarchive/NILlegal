@@ -1,0 +1,25 @@
+<% header "#{@user.name}'s Profile" %>
+
+<div class="panel panel-default panel-section-gray">
+  <div class="row">
+    <div class="col-lg-2 col-sm-4"><strong>Name</strong></div>
+    <div class="col-lg-10 col-sm-8">
+      <%= @user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2 col-sm-4"><strong>Email</strong></div>
+    <div class="col-lg-10 col-sm-8">
+      <%= @user.email %>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="panel panel-default panel-section-gray">
+  <% if @user.dares.any? %>
+    <h3>Posted Dares (<%= @user.dares.count %>)</h3>
+    <%= render partial: "dares/dares", locals: { dares: @user.dares } %>
+  <% else %>
+    <h3>No Dares Posted Yet</h3>
+  <% end %>
+</div>

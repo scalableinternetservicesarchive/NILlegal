@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
      get 'users/profile', to: 'users/registrations#profile', as: :current_user_profile
+     get 'users/:id', to: 'users/registrations#show', as: :user_profile
   end
 
   resources :dares, only: [:create, :destroy, :new, :show]

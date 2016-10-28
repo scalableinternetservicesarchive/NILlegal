@@ -1,6 +1,6 @@
 <% header @dare.title %>
 <p>
-  <span class="user"><%= link_to @dare.user.name, '#' %></span>
+  <span class="user"><%= link_to @dare.user.name, user_profile_path(:id => @dare.user.id) %></span>
   <span class="timestamp text-muted">
     posted <%= time_ago_in_words(@dare.created_at) %> ago.
   </span>
