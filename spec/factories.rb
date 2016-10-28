@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :dare_submission do
+    content "MyText"
+    user nil
+    dare nil
+  end
   factory :user do
     name "John Doe"
     email "johndoe@test.com"
@@ -9,6 +14,13 @@ FactoryGirl.define do
   factory :another_user, parent: :user do
     name "Jane Doe"
     email "janedoe@test.com"
+    password "testPassword2"
+    password_confirmation "testPassword2"
+  end
+  
+  factory :user2, parent: :user do
+    name "Jo Bob"
+    email "jobob@test.com"
     password "testPassword2"
     password_confirmation "testPassword2"
   end
