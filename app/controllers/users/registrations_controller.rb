@@ -23,7 +23,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    id = params[:id].to_i
+    if !current_user.nil? && id == current_user.id
+      redirect_to current_user_profile_path
+    else
+      @user = User.find_by(id: params[:id])
+    end
   end
 
   # PUT /resource
