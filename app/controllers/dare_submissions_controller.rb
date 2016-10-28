@@ -1,0 +1,2 @@
+class DareSubmissionsController < ApplicationController
+end

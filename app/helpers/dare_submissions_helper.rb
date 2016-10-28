@@ -1,0 +1,2 @@
+module DareSubmissionsHelper
+end

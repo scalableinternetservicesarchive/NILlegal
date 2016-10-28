@@ -29,6 +29,7 @@ class DaresController < ApplicationController
       @comment = current_user.comments.build if user_signed_in?
       @comment.dare_id = @dare.id
     end
+    @submissions = @dare.dare_submissions
   end
   
   private
