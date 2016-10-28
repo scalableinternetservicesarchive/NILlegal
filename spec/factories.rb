@@ -5,4 +5,14 @@ FactoryGirl.define do
     password "testPassword1"
     password_confirmation "testPassword1"
   end
+  
+  factory :dare do
+    title "Dare test"
+    description "This is a test"
+  end
+  
+  factory :invalid_dare, parent: :dare do
+    title ""
+    description ""  
+  end
 end
