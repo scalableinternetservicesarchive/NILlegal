@@ -1,6 +1,6 @@
 <% header "#{resource_name.to_s.humanize} Profile" %>
 
-<div class="panel panel-default panel-section">
+<div class="panel panel-default panel-section-gray">
   <div class="row">
     <div class="col-lg-2 col-sm-4"><strong>Name</strong></div>
     <div class="col-lg-10 col-sm-8">
@@ -23,7 +23,7 @@
                 
     
 </div>
-<div class="panel panel-default panel-section">
+<div class="panel panel-default panel-section-gray">
   <% if @user.dares.any? %>
     <h3>Posted Dares (<%= @user.dares.count %>)</h3>
     <%= render partial: "dares/dares", locals: { dares: @user.dares } %>

@@ -1,8 +1,10 @@
 <% header @dare.title %>
 <p>
   <span class="user"><%= link_to @dare.user.name, '#' %></span>
-    <span class="timestamp text-muted">
-      posted <%= time_ago_in_words(@dare.created_at) %> ago.
-    </span>
+  <span class="timestamp text-muted">
+    posted <%= time_ago_in_words(@dare.created_at) %> ago.
+  </span>
 </p>
-<p class="description"><%= @dare.description %></p>
+<div class="panel panel-default panel-section">
+  <p class="description"><%= @dare.description %></p>
+</div>
