@@ -13,7 +13,8 @@ describe Users::RegistrationsController do
 
     context 'user not signed in' do
       before do
-        get :show, { id: user.id }
+        get :show,
+          params: { id: user.id }
       end
 
       it 'shows corresponding user profile page' do
@@ -34,7 +35,8 @@ describe Users::RegistrationsController do
 
       context 'user visits their own profile page' do
         it 'redirects to their own profile page' do
-          get :show, { id: user.id }
+          get :show,
+            params: { id: user.id }
           expect(response).to redirect_to(current_user_profile_path)
         end
       end
@@ -43,7 +45,8 @@ describe Users::RegistrationsController do
         let(:another_user) { FactoryGirl.create(:another_user) }
 
         before do
-          get :show, { id: another_user.id }
+          get :show,
+            params: { id: another_user.id }
         end
         
         it 'shows corresponding user profile page' do
