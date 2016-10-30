@@ -5,7 +5,7 @@
 <div class="panel panel-default panel-section">
   <% if @comments.any? %>
     <%= render partial: "comments/comment", locals: { comments: @comments } %>
-  <% else %>N
+  <% else %>
     <h3>No Comments Posted Yet</h3>
   <% end %>
 </div>
