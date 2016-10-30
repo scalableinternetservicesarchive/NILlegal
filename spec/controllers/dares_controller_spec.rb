@@ -68,4 +68,42 @@ describe DaresController do
     end
   
   end
+
+  describe 'GET show_dare' do
+    before do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      @dare = FactoryGirl.create(:dare, user_id: @user.id)
+    end
+
+    it 'displays correct dare info' do
+      get :show,
+        params: { id: @dare.id }
+      assert_select '#dare-title', @dare.title
+      assert_select '#dare-description', @dare.description
+    end
+
+    context 'user signed in' do
+      before do
+        get :show,
+          params: { id: @dare.id }
+      end
+
+      it 'shows comment form' do
+        assert_select '#new_comment', count: 1
+      end
+    end
+
+    context 'user not signed in' do
+      before do
+        sign_out @user
+        get :show,
+          params: { id: @dare.id }
+      end
+
+      it 'does not show comment form' do
+        assert_select '#new_comment', count: 0
+      end
+    end
+  end
 end

@@ -25,8 +25,10 @@ class DaresController < ApplicationController
   def show
     @dare = Dare.find_by(id: params[:id])
     @comments = @dare.comments
-    @comment = current_user.comments.build if user_signed_in?
-    @comment.dare_id = @dare.id
+    if user_signed_in?
+      @comment = current_user.comments.build if user_signed_in?
+      @comment.dare_id = @dare.id
+    end
   end
   
   private
