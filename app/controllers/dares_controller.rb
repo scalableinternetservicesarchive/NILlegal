@@ -24,6 +24,7 @@ class DaresController < ApplicationController
   
   def show
     @dare = Dare.find_by(id: params[:id])
+    @comments = @dare.comments
   end
   
   private

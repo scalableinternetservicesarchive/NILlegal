@@ -1,3 +1,14 @@
 <% header @dare.title %>
 
 <p class="description"><%= @dare.description %></p>
+
+<div class="panel panel-default panel-section">
+  <% if @comments.any? %>
+    <%= render partial: "comments/comment", locals: { comments: @comments } %>
+  <% else %>N
+    <h3>No Comments Posted Yet</h3>
+  <% end %>
+</div>
+
+
+
