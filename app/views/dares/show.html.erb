@@ -11,6 +11,7 @@
 </div>
 
 <div class="panel panel-default panel-section-gray">
+  <%= render partial: "comments/comment_form" %>
   <% if @comments.any? %>
     <%= render partial: "comments/comment", locals: { comments: @comments } %>
   <% else %>

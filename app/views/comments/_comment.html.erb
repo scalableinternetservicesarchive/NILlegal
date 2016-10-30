@@ -1,11 +1,11 @@
 <% comments.each do |comment| %>
-  <div id="comment-<%= comment.id %>" class="comment-summary">
+  <div id="comment-<%= comment.id %>" class="comment-box">
     <span class="user">
       <strong><%= link_to comment.user.name, '#' %></strong>
     </span><br>
     <p class="description"><%= comment.body %></p>
     <span class="timestamp text-muted">
-      posted <%= time_ago_in_words(comment.created_at) %> ago.
+      posted <%= time_ago_in_words(comment.created_at) %> ago
     </span>
   </div>
 <% end %>
