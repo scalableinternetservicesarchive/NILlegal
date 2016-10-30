@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = "Comment posted!"
-      redirect_to show_dare_list_path
     else
-      redirect_to show_dare_list_path
+      flash[:danger] = "Failed to post comment"
     end
+    redirect_to dare_path(id: @comment.dare_id)
   end
 
   def destroy
