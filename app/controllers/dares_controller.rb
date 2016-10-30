@@ -9,7 +9,7 @@ class DaresController < ApplicationController
     @dare = current_user.dares.build(dare_params)
     if @dare.save
       flash[:success] = "Dare created!"
-      redirect_to "/dares"
+      redirect_to show_dare_list_path
     else
       render 'new'
     end
