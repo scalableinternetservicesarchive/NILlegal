@@ -9,7 +9,7 @@ class DaresController < ApplicationController
     @dare = current_user.dares.build(dare_params)
     if @dare.save
       flash[:success] = "Dare created!"
-      redirect_to "/dares"
+      redirect_to show_dare_list_path
     else
       render 'new'
     end
@@ -20,6 +20,10 @@ class DaresController < ApplicationController
   end
 
   def destroy
+  end
+  
+  def show
+    @dare = Dare.find_by(id: params[:id])
   end
   
   private

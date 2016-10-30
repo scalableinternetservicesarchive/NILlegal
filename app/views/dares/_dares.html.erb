@@ -1,10 +1,10 @@
 <% dares.each do |dare| %>
   <div id="dare-<%= dare.id %>" class="dare-summary">
     <span class="title">
-      <strong><%= dare.title %></strong>
+      <strong><%= link_to dare.title, dare_path(id: dare.id) %></strong>
     </span><br>
-    <p class="description"><%= dare.description %></p>
-    <span class="user"><%= link_to dare.user.name, '#' %></span>
+    <p class="description"><%= link_to dare.description, dare_path(id: dare.id) %></p>
+    <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
     <span class="timestamp text-muted">
       posted <%= time_ago_in_words(dare.created_at) %> ago.
     </span>

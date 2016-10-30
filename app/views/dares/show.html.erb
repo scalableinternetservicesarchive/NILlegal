@@ -1,0 +1,10 @@
+<% header @dare.title %>
+<p>
+  <span class="user"><%= link_to @dare.user.name, user_profile_path(:id => @dare.user.id) %></span>
+  <span class="timestamp text-muted">
+    posted <%= time_ago_in_words(@dare.created_at) %> ago.
+  </span>
+</p>
+<div class="panel panel-default panel-section">
+  <p class="description"><%= @dare.description %></p>
+</div>

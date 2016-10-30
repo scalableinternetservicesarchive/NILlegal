@@ -7,9 +7,10 @@ Rails.application.routes.draw do
               }
 
   devise_scope :user do
-     get 'users/show', to: 'users/registrations#show', as: :show_user_registration
+     get 'users/profile', to: 'users/registrations#profile', as: :current_user_profile
+     get 'users/:id', to: 'users/registrations#show', as: :user_profile
   end
 
-  resources :dares, only: [:create, :destroy, :new]
+  resources :dares, only: [:create, :destroy, :new, :show]
   get 'dares/', to: 'dares#index', as: :show_dare_list
 end
