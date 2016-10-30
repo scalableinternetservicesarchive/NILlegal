@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-user1 = User.create!(name:  "Example User",
+user1 = User.create!(name:  "Example User One",
              email: "foo@bar.org",
              password:              "foobar",
              password_confirmation: "foobar")
              
-user2 = User.create!(name:  "Example User",
+user2 = User.create!(name:  "Example User Two",
              email: "bar@foo.org",
              password:              "foobar",
              password_confirmation: "foobar")
@@ -20,6 +20,6 @@ user2 = User.create!(name:  "Example User",
              
 dare = user1.dares.create(title: "Test", description: "Test dare")
 
-dare_sub = dare.dare_submissions.build(content: "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+dare_sub = dare.dare_submissions.build(content: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", description: "Get Rick Rolled")
 
 user2.dare_submissions << dare_sub

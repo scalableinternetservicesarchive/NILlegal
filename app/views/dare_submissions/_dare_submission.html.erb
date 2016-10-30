@@ -4,6 +4,8 @@
     <div class="embed-container">  
       <%= embed(dare_submission.content) %>
     </div>  
-  
+    <span class="user"><%= link_to dare_submission.user.name, '#' %></span>
+    <span><%= dare_submission.description %></span>
+    
   
 </li>
