@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :dare_submission do
     content "MyText"
-    user nil
-    dare nil
+    description "MyText"
+    user 
+    
+    dare 
   end
   factory :user do
     name "John Doe"
@@ -28,10 +30,19 @@ FactoryGirl.define do
   factory :dare do
     title "Dare test"
     description "This is a test"
+    association :user, factory: :user2
   end
   
   factory :invalid_dare, parent: :dare do
     title ""
     description ""  
   end
+  
+  # factory :dare_submission do
+  #   content "youtube link"
+  #   description "description"
+  #   association :user, factory: :user
+  #   dare
+  # end
+  
 end
