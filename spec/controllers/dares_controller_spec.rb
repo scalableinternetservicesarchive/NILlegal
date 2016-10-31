@@ -28,7 +28,7 @@ describe DaresController do
     context "not logged in" do
       it 'redirects to sign in' do
         get :new
-        response.should redirect_to new_user_session_path
+        expect(response).to redirect_to new_user_session_path
       end  
     end
 
@@ -41,8 +41,6 @@ describe DaresController do
         sign_in_user
         get :new
       end   
-      
-      
       
       context "with invalid attributes" do
         it "does not save the new post" do
@@ -82,12 +80,14 @@ describe DaresController do
     
     context "not logged in" do
       it 'redirects to sign in' do
-        post :create, dare: FactoryGirl.attributes_for(:dare)
-        response.should redirect_to new_user_session_path
+        post :create,
+          params: {dare: FactoryGirl.attributes_for(:dare)}
+        expect(response).to redirect_to new_user_session_path
       end 
       it "post is not saved" do
         expect{
-            post :create, dare: FactoryGirl.attributes_for(:dare)
+            post :create, 
+              params: {dare: FactoryGirl.attributes_for(:dare)}
         }.to change(Dare,:count).by(0)
       end
     end

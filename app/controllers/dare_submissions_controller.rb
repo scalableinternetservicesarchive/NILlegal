@@ -16,7 +16,7 @@ class DareSubmissionsController < ApplicationController
   def edit
   end
   
-  def destory
+  def destroy
   end
   
   def new
