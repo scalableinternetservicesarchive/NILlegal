@@ -23,6 +23,11 @@ RSpec.describe DareSubmission, type: :model do
     expect(subject).to_not be_valid
   end
   
+  it "is not valid without valid content" do
+    subject.content = "google.com"
+    expect(subject).to_not be_valid
+  end
+  
   it "is not valid without description" do
     subject.description = " "
     expect(subject).to_not be_valid

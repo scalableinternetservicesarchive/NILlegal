@@ -1,10 +1,15 @@
 FactoryGirl.define do
   factory :dare_submission do
-    content "MyText"
+    content "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     description "MyText"
     user 
     dare 
   end
+  
+  
+  
+  
+  
   factory :user do
     name "John Doe"
     email "johndoe@test.com"
@@ -37,11 +42,5 @@ FactoryGirl.define do
     description ""  
   end
   
-  # factory :dare_submission do
-  #   content "youtube link"
-  #   description "description"
-  #   association :user, factory: :user
-  #   dare
-  # end
-  
+ 
 end
