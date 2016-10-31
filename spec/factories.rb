@@ -3,7 +3,6 @@ FactoryGirl.define do
     content "MyText"
     description "MyText"
     user 
-    
     dare 
   end
   factory :user do

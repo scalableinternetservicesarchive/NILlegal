@@ -1,5 +1,5 @@
 class DareSubmissionsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :destroy]
   before_action :correct_user,   only: :destroy
   
   def create
@@ -20,7 +20,12 @@ class DareSubmissionsController < ApplicationController
   end
   
   def new
-    @dare_submission = current_user.dare_submissions.build(dare_submission_params)
+    if (!Dare.find_by(id: dare_submission_params[:dare_id]).nil? )
+      @dare_submission = current_user.dare_submissions.build(dare_submission_params)
+    else
+      flash[:danger] = "Cannot Submit to Nonexistent Dare"
+      redirect_to show_dare_list_path
+    end
   end
   
   private

@@ -31,5 +31,5 @@
 </div>
 
 <div>
-  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary'} ) %>
+  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
 </div>
