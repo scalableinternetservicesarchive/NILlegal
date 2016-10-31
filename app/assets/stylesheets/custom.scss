@@ -31,3 +31,17 @@
   padding-top: 15px;
   padding-bottom: 15px;
 }
+
+.comment-box {
+  @extend .panel;
+  @extend .panel-default;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.navbar-inverse {
+  border-radius: 0px;
+}

@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   resources :dares, only: [:create, :destroy, :new, :show]
   get 'dares/', to: 'dares#index', as: :show_dare_list
+
+  resources :comments, only: [:create, :destroy]
 end
