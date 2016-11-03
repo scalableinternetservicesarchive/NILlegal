@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :dares, only: [:create, :destroy, :new, :show]
+  resources :dare_submissions,          only: [:create, :edit, :destroy, :new]
   get 'dares/', to: 'dares#index', as: :show_dare_list
+
+  resources :comments, only: [:create, :destroy]
 end

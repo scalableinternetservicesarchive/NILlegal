@@ -3,10 +3,18 @@
     <span class="title">
       <strong><%= link_to dare.title, dare_path(id: dare.id) %></strong>
     </span><br>
-    <p class="description"><%= link_to dare.description, dare_path(id: dare.id) %></p>
-    <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
-    <span class="timestamp text-muted">
-      posted <%= time_ago_in_words(dare.created_at) %> ago.
-    </span>
+    <div class="row">
+      <div class="col-md-8 col-sm-8">
+        <p class="description"><%= link_to dare.description, dare_path(id: dare.id) %></p>
+        <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
+        <span class="timestamp text-muted">
+          posted <%= time_ago_in_words(dare.created_at) %> ago.
+        </span>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <span class="comments-count"><%= dare.dare_submissions.count %> submissions</span><br>
+        <span class="comments-count"><%= dare.comments.count %> comments</span>
+      </div>
+    </div>
   </div>
 <% end %>

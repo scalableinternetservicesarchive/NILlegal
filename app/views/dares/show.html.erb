@@ -1,10 +1,35 @@
-<% header @dare.title %>
-<p>
-  <span class="user"><%= link_to @dare.user.name, user_profile_path(:id => @dare.user.id) %></span>
-  <span class="timestamp text-muted">
-    posted <%= time_ago_in_words(@dare.created_at) %> ago.
-  </span>
-</p>
 <div class="panel panel-default panel-section">
-  <p class="description"><%= @dare.description %></p>
+  <h2 id='dare-title'><%= @dare.title %></h2>
+  <p>
+    <span class="user"><%= link_to @dare.user.name, user_profile_path(:id => @dare.user.id) %></span>
+    <span class="timestamp text-muted">
+      posted <%= time_ago_in_words(@dare.created_at) %> ago.
+    </span>
+  </p>
+  <hr/>
+  <p id='dare-description' class="description"><%= @dare.description %></p>
+</div>
+
+<div class="panel panel-default panel-section-gray">
+  <% if user_signed_in? %>
+    <%= render partial: "comments/comment_form" %>
+  <% end %>
+  <% if @comments.any? %>
+    <%= render partial: "comments/comment", locals: { comments: @comments } %>
+  <% else %>
+    <p>No Comments Posted Yet</p>
+  <% end %>
+</div>
+
+<div class="col-md-8">
+    <% if @dare.dare_submissions.any? %>
+      <h3>Submissions (<%= @dare.dare_submissions.count %>)</h3>
+      <ol class="dare_submissions">
+        <%= render @submissions %>
+      </ol>
+    <% end %>
+</div>
+
+<div>
+  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
 </div>
