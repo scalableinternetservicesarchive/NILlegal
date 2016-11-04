@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:body, :dare_id)
+      params.require(:comment).permit(:body, :dare_id, :likes)
     end
 
     def logged_in_user
