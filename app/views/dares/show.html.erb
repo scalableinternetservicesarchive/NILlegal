@@ -6,25 +6,32 @@
       posted <%= time_ago_in_words(@dare.created_at) %> ago.
     </span>
   </p>
+  <span class="karma-offer">Karma offer: <strong><%= @dare.karma_offer %></strong></span>
   <hr/>
-  <p id='dare-description' class="description"><%= @dare.description %></p>
+  <p id='dare-description' class="description"><%= @dare.description %></p><br>
+  
+  <div>
+    <%= link_to("Make a submission for this dare", { controller: "dare_submissions", action: "new", 
+                                                     dare_submission: {dare_id: @dare.id}}, 
+                                                   {class: 'btn btn-primary', method: :get }) %>
+  </div>
 </div>
-
-<div class="col-md-8">
-    <% if @dare.dare_submissions.any? %>
-      <h3>Submissions (<%= @dare.dare_submissions.count %>)</h3>
-      <ol class="dare_submissions">
-        <%= render @submissions %>
-      </ol>
-    <% end %>
-</div>
-<br>
-<div>
-  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
-</div>
-<br>
 
 <div class="panel panel-default panel-section-gray">
+  <% if @dare.dare_submissions.any? %>
+    <h3>Submissions (<%= @dare.dare_submissions.count %>)</h3>
+    <div class="dare_submissions">
+      <%= render partial: "dare_submissions/dare_submissions", locals: { dare_submissions: @dare.dare_submissions }%>
+    </div>
+  <% else %>
+    <p>No Submissions Yet</p>
+  <% end %>
+</div>
+
+<div class="panel panel-default panel-section-gray">
+  <% if @comments.any? %>
+    <h3>Comments (<%= @comments.count %>)</h3>
+  <% end %>
   <% if user_signed_in? %>
     <%= render partial: "comments/comment_form" %>
   <% end %>

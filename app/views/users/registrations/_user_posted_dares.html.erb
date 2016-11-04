@@ -1,0 +1,8 @@
+<div class="panel panel-default panel-section-gray">
+  <% if user.dares.any? %>
+    <h3>Posted Dares (<%= user.dares.count %>)</h3>
+    <%= render partial: "dares/dares", locals: { dares: user.dares } %>
+  <% else %>
+    <h3>No Dares Posted Yet</h3>
+  <% end %>
+</div>
