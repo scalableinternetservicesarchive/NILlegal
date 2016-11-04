@@ -1,11 +1,17 @@
 <% dare_submissions.each do |dare_submission| %>
-  <div id="dare_submission-<%= dare_submission.id %>">
-    <div class="embed-container">  
-      <%= embed(dare_submission.content) %>
-    </div>  
-    <span class="user"><%= link_to dare_submission.user.name, '#' %></span>
-    <span><%= dare_submission.description %></span>
-<<<<<<< 0d50ca72de7360d1f8e16a24f3f6c09058ac306f:app/views/dare_submissions/_dare_submission.html.erb
+  <div id="dare_submission-<%= dare_submission.id %>" class="dare-submission-box">
+    <div class="row">
+      <div class="col-md-4"> 
+        <%= embed(dare_submission.content) %>
+      </div>
+      <div class="col-md-8"> 
+        <p>
+          <span class="user"><%= link_to dare_submission.user.name, user_profile_path(:id => dare_submission.user.id) %></span><br>
+          <span><%= dare_submission.description %></span>
+        </p>
+        <span class="text-muted">submitted <%= time_ago_in_words(dare_submission.created_at) %> ago.</span>
+      </div>
+    </div>
     <span class="number of likes pull-right">
       <%= dare_submission.submission_likes.count('user_id') %> likes
     </span>
@@ -13,9 +19,5 @@
     <span class="like this pull-right">
       <%= link_to("Like this!", {controller: "submission_likes", action: "create", submission_like: {dare_submission_id: dare_submission.id}}, {class: 'btn btn-primary btn-sm', method: :post }) %>
     </span>
-  
-</li>
-=======
   </div>
 <% end %>
->>>>>>> Start restructuring views:app/views/dare_submissions/_dare_submissions.html.erb

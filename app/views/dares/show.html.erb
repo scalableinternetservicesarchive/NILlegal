@@ -17,10 +17,15 @@
     <div class="dare_submissions">
       <%= render partial: "dare_submissions/dare_submissions", locals: { dare_submissions: @dare.dare_submissions }%>
     </div>
+  <% else %>
+    <p>No Submissions Yet</p>
   <% end %>
 </div>
 
 <div class="panel panel-default panel-section-gray">
+  <% if @comments.any? %>
+    <h3>Comments (<%= @comments.count %>)</h3>
+  <% end %>
   <% if user_signed_in? %>
     <%= render partial: "comments/comment_form" %>
   <% end %>
