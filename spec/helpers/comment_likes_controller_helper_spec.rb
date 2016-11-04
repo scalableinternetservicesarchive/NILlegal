@@ -10,6 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe CommentLikeControllerHelper, type: :helper do
+RSpec.describe CommentLikesControllerHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
