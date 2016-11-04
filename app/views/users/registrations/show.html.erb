@@ -1,4 +1,6 @@
 <% header "#{@user.name}'s Profile" %>
 
-<%= render partial: 'user_summary', locals: { user: @user } %>
+<div class="panel panel-default panel-section-gray">
+  <%= render partial: 'user_summary', locals: { user: @user } %>
+</div>
 <%= render partial: 'user_posted_dares', locals: { user: @user } %>

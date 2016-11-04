@@ -1,8 +1,16 @@
 <%= form_for(@comment) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :body, placeholder: "Leave a comment", cols: 50 %>
-    <%= f.hidden_field :dare_id, value: @comment.dare_id %>
+  <div class="comment-form-box">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="field">
+          <%= f.text_area :body, placeholder: "Leave a comment", class: 'form-control', cols: 50, rows: 1 %>
+          <%= f.hidden_field :dare_id, value: @comment.dare_id %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <%= f.submit "Comment", class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
-  <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>

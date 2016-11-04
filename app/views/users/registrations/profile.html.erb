@@ -1,10 +1,17 @@
 <% header "#{resource_name.to_s.humanize} Profile" %>
 
-<%= render partial: 'user_summary', locals: { user: @user } %>
-
-<%= button_to "Edit profile", edit_user_registration_path,
-              class: 'btn btn-primary', method: :get %>
-<%= button_to "Post a Dare", new_dare_path,
-              class: 'btn btn-primary' , method: :get%>
+<div class="panel panel-default panel-section-gray">
+  <div class="row">
+    <div class="col-md-9">
+      <%= render partial: 'user_summary', locals: { user: @user } %>
+    </div>
+    <div class="col-md-3">
+      <%= button_to "Edit profile", edit_user_registration_path,
+                    class: 'btn btn-primary float-right', method: :get %>
+      <%= button_to "Post a Dare", new_dare_path,
+                    class: 'btn btn-primary float-right', method: :get %>
+    </div>
+  </div>
+</div>
 
 <%= render partial: 'user_posted_dares', locals: { user: @user } %>

@@ -10,14 +10,16 @@
           <span><%= dare_submission.description %></span>
         </p>
         <span class="text-muted">submitted <%= time_ago_in_words(dare_submission.created_at) %> ago.</span>
+        <span class="number of likes pull-right">
+          <%= dare_submission.submission_likes.count('user_id') %> likes
+        </span>
+        <br>
+        <span class="like this pull-right">
+          <%= link_to("Like this!", { controller: "submission_likes", action: "create", 
+                                      submission_like: { dare_submission_id: dare_submission.id } }, 
+                                    {class: 'btn btn-primary btn-sm', method: :post }) %>
+        </span>
       </div>
     </div>
-    <span class="number of likes pull-right">
-      <%= dare_submission.submission_likes.count('user_id') %> likes
-    </span>
-    <br>
-    <span class="like this pull-right">
-      <%= link_to("Like this!", {controller: "submission_likes", action: "create", submission_like: {dare_submission_id: dare_submission.id}}, {class: 'btn btn-primary btn-sm', method: :post }) %>
-    </span>
   </div>
 <% end %>

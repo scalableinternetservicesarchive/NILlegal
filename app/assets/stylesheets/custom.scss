@@ -49,6 +49,16 @@
   padding-bottom: 15px;
 }
 
+.comment-form-box {
+  @extend .panel;
+  @extend .panel-default;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px; 
+}
+
 .dare-submission-box {
   @extend .panel;
   @extend .panel-default;
@@ -61,6 +71,11 @@
 
 .navbar-inverse {
   border-radius: 0px;
+}
+
+.float-right {
+  float: right;
+  overflow: hidden;
 }
 
 // for embedded youtube videos
