@@ -1,0 +1,2 @@
+class SubmissionLike < ApplicationRecord
+end
