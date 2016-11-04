@@ -3,7 +3,6 @@
   <div class="field">
     <%= f.text_area :body, placeholder: "Leave a comment", cols: 50 %>
     <%= f.hidden_field :dare_id, value: @comment.dare_id %>
-    <%= f.hidden_field :likes, value: 0 %>
   </div>
   <%= f.submit "Comment", class: "btn btn-primary" %>
 <% end %>

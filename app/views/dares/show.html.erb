@@ -19,6 +19,10 @@
     <% end %>
 </div>
 
+<div>
+  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
+</div>
+
 <div class="panel panel-default panel-section-gray">
   <% if user_signed_in? %>
     <%= render partial: "comments/comment_form" %>
@@ -28,8 +32,4 @@
   <% else %>
     <p>No Comments Posted Yet</p>
   <% end %>
-</div>
-
-<div>
-  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
 </div>
