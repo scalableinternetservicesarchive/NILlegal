@@ -1,5 +1,11 @@
 <% header "Dares" %>
 
+<% if user_signed_in? %>
+  <%= link_to "Post a dare", new_dare_path, class: "btn btn-lg btn-primary" %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+<% end %>
+
 <div class="panel panel-default panel-section-gray">
   <% if @dares.any? %>
     <%= render partial: "dares/dares", locals: { dares: @dares } %>

@@ -1,11 +1,11 @@
-<li id="dare_submission-<%= dare_submission.id %>">
-
-
+<% dare_submissions.each do |dare_submission| %>
+  <div id="dare_submission-<%= dare_submission.id %>">
     <div class="embed-container">  
       <%= embed(dare_submission.content) %>
     </div>  
     <span class="user"><%= link_to dare_submission.user.name, '#' %></span>
     <span><%= dare_submission.description %></span>
+<<<<<<< 0d50ca72de7360d1f8e16a24f3f6c09058ac306f:app/views/dare_submissions/_dare_submission.html.erb
     <span class="number of likes pull-right">
       <%= dare_submission.submission_likes.count('user_id') %> likes
     </span>
@@ -15,3 +15,7 @@
     </span>
   
 </li>
+=======
+  </div>
+<% end %>
+>>>>>>> Start restructuring views:app/views/dare_submissions/_dare_submissions.html.erb

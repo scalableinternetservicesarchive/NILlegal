@@ -11,19 +11,14 @@
   <p id='dare-description' class="description"><%= @dare.description %></p>
 </div>
 
-<div class="col-md-8">
-    <% if @dare.dare_submissions.any? %>
-      <h3>Submissions (<%= @dare.dare_submissions.count %>)</h3>
-      <ol class="dare_submissions">
-        <%= render @submissions %>
-      </ol>
-    <% end %>
+<div class="panel panel-default panel-section-gray">
+  <% if @dare.dare_submissions.any? %>
+    <h3>Submissions (<%= @dare.dare_submissions.count %>)</h3>
+    <div class="dare_submissions">
+      <%= render partial: "dare_submissions/dare_submissions", locals: { dare_submissions: @dare.dare_submissions }%>
+    </div>
+  <% end %>
 </div>
-<br>
-<div>
-  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
-</div>
-<br>
 
 <div class="panel panel-default panel-section-gray">
   <% if user_signed_in? %>
@@ -35,3 +30,8 @@
     <p>No Comments Posted Yet</p>
   <% end %>
 </div>
+
+<div>
+  <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
+</div>
+<br>
