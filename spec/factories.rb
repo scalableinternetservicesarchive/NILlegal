@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :submission_like do
+    
+  end
+  factory :comment_like do
+    
+  end
   factory :dare_submission do
     content "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     description "MyText"
