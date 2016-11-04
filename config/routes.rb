@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :dare_submissions,          only: [:create, :edit, :destroy, :new]
   get 'dares/', to: 'dares#index', as: :show_dare_list
   resources :comment_likes 
+  resources :submission_likes 
   resources :comments, only: [:create, :destroy]
 end

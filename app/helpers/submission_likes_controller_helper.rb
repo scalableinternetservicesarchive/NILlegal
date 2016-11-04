@@ -1,0 +1,2 @@
+module SubmissionLikesControllerHelper
+end
