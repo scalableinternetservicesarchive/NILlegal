@@ -10,6 +10,13 @@
   @extend .alert-info;
 }
 
+.text-centered {
+  text-align: center;
+}
+
+#landing {
+}
+
 .panel-section {
   padding-left: 30px;
   padding-right: 30px;
@@ -42,8 +49,33 @@
   padding-bottom: 15px;
 }
 
+.comment-form-box {
+  @extend .panel;
+  @extend .panel-default;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px; 
+}
+
+.dare-submission-box {
+  @extend .panel;
+  @extend .panel-default;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px; 
+}
+
 .navbar-inverse {
   border-radius: 0px;
+}
+
+.float-right {
+  float: right;
+  overflow: hidden;
 }
 
 // for embedded youtube videos
@@ -54,7 +86,6 @@
   padding-top: 30px;
   height: 0;
   overflow: hidden;
-  width: 100%;
   height: auto;
   margin-bottom: 12px;
 } 
@@ -64,6 +95,4 @@
 .embed-container embed {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;
-  height: 100%;
 }

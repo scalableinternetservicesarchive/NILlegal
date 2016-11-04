@@ -2,32 +2,16 @@
 
 <div class="panel panel-default panel-section-gray">
   <div class="row">
-    <div class="col-lg-2 col-sm-4"><strong>Name</strong></div>
-    <div id="user-name" class="col-lg-10 col-sm-8">
-      <%= @user.name %>
+    <div class="col-md-9">
+      <%= render partial: 'user_summary', locals: { user: @user } %>
+    </div>
+    <div class="col-md-3">
+      <%= button_to "Edit profile", edit_user_registration_path,
+                    class: 'btn btn-primary float-right', method: :get %>
+      <%= button_to "Post a Dare", new_dare_path,
+                    class: 'btn btn-primary float-right', method: :get %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-2 col-sm-4"><strong>Email</strong></div>
-    <div id="user-email" class="col-lg-10 col-sm-8">
-      <%= @user.email %>
-    </div>
-  </div>
-  <br>
-
-  <%= button_to "Edit profile", edit_user_registration_path,
-                class: 'btn btn-primary', method: :get %>
-  <%= button_to "Post a Dare", new_dare_path,
-                class: 'btn btn-primary' , method: :get%>
-
-
-
 </div>
-<div class="panel panel-default panel-section-gray">
-  <% if @user.dares.any? %>
-    <h3>Posted Dares (<%= @user.dares.count %>)</h3>
-    <%= render partial: "dares/dares", locals: { dares: @user.dares } %>
-  <% else %>
-    <h3>No Dares Posted Yet</h3>
-  <% end %>
-</div>
+
+<%= render partial: 'user_posted_dares', locals: { user: @user } %>

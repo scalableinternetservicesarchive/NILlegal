@@ -35,7 +35,7 @@ class DaresController < ApplicationController
   private
 
     def dare_params
-      params.require(:dare).permit(:title, :description)
+      params.require(:dare).permit(:title, :karma_offer, :description)
     end
 
     def logged_in_user

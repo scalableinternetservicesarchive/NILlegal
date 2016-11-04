@@ -5,7 +5,8 @@
     </span><br>
     <div class="row">
       <div class="col-md-8 col-sm-8">
-        <p class="description"><%= link_to dare.description, dare_path(id: dare.id) %></p>
+        <p class="karma-offer">Karma offer: <strong><%= dare.karma_offer %></strong></p>
+        <p class="description text-muted"><%= dare.description %></p>
         <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
         <span class="timestamp text-muted">
           posted <%= time_ago_in_words(dare.created_at) %> ago.
