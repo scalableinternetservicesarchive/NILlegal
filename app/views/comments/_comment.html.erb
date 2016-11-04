@@ -2,10 +2,17 @@
   <div id="comment-<%= comment.id %>" class="comment-box">
     <span class="user">
       <strong><%= link_to comment.user.name, '#' %></strong>
+    </span>
+    <span class="number of likes pull-right">
+      <%= comment.comment_likes.count('user_id') %> likes
     </span><br>
     <p class="description"><%= comment.body %></p>
     <span class="timestamp text-muted">
       posted <%= time_ago_in_words(comment.created_at) %> ago
     </span>
+    <span class="like this pull-right">
+      <%= link_to("Like this!", {controller: "comment_likes", action: "create", comment_like: {comment_id: comment.id}}, {class: 'btn btn-primary btn-sm', method: :post }) %>
+    </span>
+
   </div>
 <% end %>
