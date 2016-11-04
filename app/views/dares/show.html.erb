@@ -18,10 +18,11 @@
       </ol>
     <% end %>
 </div>
-
+<br>
 <div>
   <%= link_to("Make a submission for this dare", {controller: "dare_submissions", action: "new", dare_submission: {dare_id: @dare.id}}, {class: 'btn btn-primary', method: :get }) %>
 </div>
+<br>
 
 <div class="panel panel-default panel-section-gray">
   <% if user_signed_in? %>
