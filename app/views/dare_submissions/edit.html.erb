@@ -1,0 +1,18 @@
+<% header "Edit submission for dare" %>
+<% provide(:button_text, 'Edit Dare Submission') %>
+<div class="panel panel-default panel-section-gray">
+  <%= form_for(@dare_submission) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+
+    <%= f.label :youtube_url %>
+    <%= f.text_field :content, class: 'form-control' %><br>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', rows: 10 %><br>
+    
+    <%= f.hidden_field :dare_id, value: @dare_submission.dare_id %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% end %>
+</div>
