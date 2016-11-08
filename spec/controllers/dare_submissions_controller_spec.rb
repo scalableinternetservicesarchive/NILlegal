@@ -210,7 +210,7 @@ RSpec.describe DareSubmissionsController, type: :controller do
           expect(flash[:success]).to match("Submission updated")
         end
         it "redirect to root_url when wrong dare submission" do
-          get :edit,
+          patch :update,
             params: { 
               id: 2,
               dare_submission:{  
@@ -222,12 +222,21 @@ RSpec.describe DareSubmissionsController, type: :controller do
         end
       end
       
-      
-      
-      
+    end
+    context "invalid user" do
+      it "redirect sign in when not logged in" do
+        patch :update,
+          params: { 
+            id: 1,
+            dare_submission:{  
+                        content:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                        description: "Test1",
+                        dare_id: 1}
+                        }
+        expect(response).to redirect_to new_user_session_path
+      end
       
     end
-    
     
     
     
