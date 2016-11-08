@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :dares, only: [:create, :destroy, :new, :show]
-  resources :dare_submissions,          only: [:create, :edit, :destroy, :new]
+  resources :dare_submissions,          only: [:create, :edit, :destroy, :new, :update]
   get 'dares/', to: 'dares#index', as: :show_dare_list
   resources :comment_likes 
   resources :submission_likes 

@@ -1,6 +1,6 @@
 class DareSubmissionsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :logged_in_user, only: [:new, :create, :destroy, :edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
   
   def create
     @dare_submission = current_user.dare_submissions.build(dare_submission_params)
@@ -14,6 +14,15 @@ class DareSubmissionsController < ApplicationController
   end
   
   def edit
+  end
+
+  def update
+    if @dare_submission.update_attributes(dare_submission_params)
+      flash[:success] = "Submission updated"
+      redirect_to dare_path(@dare_submission.dare)
+    else
+      render 'edit'
+    end
   end
   
   def destroy
@@ -40,7 +49,7 @@ class DareSubmissionsController < ApplicationController
     end
     
     def correct_user
-      @dare_submission = current_user.dare_submission.find_by(id: params[:id])
+      @dare_submission = current_user.dare_submissions.find_by(id: params[:id])
       redirect_to root_url if @dare_submission.nil?
     end
 
