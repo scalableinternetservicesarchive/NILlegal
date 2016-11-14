@@ -41,12 +41,12 @@ class DareSubmissionsController < ApplicationController
     @dare = Dare.find_by(id: dare_submission_params[:dare_id])
     @dare_submission = DareSubmission.find_by(id: params[:dare_submission][:id])
     @dare_submission_user = @dare_submission.user
-    if user_signed_in?
+    if user_signed_in? && current_user.id == @dare.user_id
       @dare_submission_user.karma_points = @dare_submission_user.karma_points + @dare.karma_offer
       if @dare_submission_user.save
         flash[:success] = "Karma rewarded!"
       end
-      redirect_to dare_path(@dare_submission.dare.id)
+      redirect_to dare_path(@dare.id)
     end
   end
   
