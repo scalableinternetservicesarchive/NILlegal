@@ -15,3 +15,17 @@
     <h3>No Dares Posted Yet</h3>
   <% end %>
 </div>
+
+
+<%= form_tag(show_dare_list_path, method: 'get') do %>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Dares" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+      </span>
+    </div>
+  </div>
+<% end %>
+
+
