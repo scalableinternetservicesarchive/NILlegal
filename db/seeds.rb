@@ -18,7 +18,7 @@ user2 = User.create!(name:  "Example User Two",
              password_confirmation: "foobar")
              
              
-dare = user1.dares.create(title: "Test", description: "Test dare")
+dare = user1.dares.create(title: "Test", description: "Test dare", karma_offer: 100)
 
 dare_sub = dare.dare_submissions.build(content: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", description: "Get Rick Rolled")
 
