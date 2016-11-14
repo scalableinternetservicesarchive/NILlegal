@@ -35,6 +35,7 @@ class DaresController < ApplicationController
     end
     @submissions = @dare.dare_submissions
   end
+
   
   private
 

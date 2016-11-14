@@ -24,6 +24,11 @@
                                       submission_like: { dare_submission_id: dare_submission.id } }, 
                                     {class: 'btn btn-primary btn-sm', method: :post }) %>
         </span>
+        <% if (current_user == dare_submission.user) %>
+            <%= link_to("Reward karma!", { controller: "dare_submissions", action: "transfer_karma", 
+                                      dare_submission: { dare_submission_id: dare_submission.id, dare_id: dare_submission.dare_id } }, 
+                                    {class: 'btn btn-primary btn-sm', method: :post }) %>
+        <% end %>
       </div>
     </div>
   </div>
