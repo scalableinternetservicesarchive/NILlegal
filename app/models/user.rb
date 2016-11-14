@@ -8,4 +8,18 @@ class User < ApplicationRecord
   has_many :dare_submissions, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+         
+         
+  def add_karma(points)
+    self.karma_points += points
+    self.save
+  end
+  
+  def remove_karma(points)
+    self.karma_points -= points
+    self.save
+  end
+         
+  
 end
