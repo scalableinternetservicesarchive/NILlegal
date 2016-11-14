@@ -40,9 +40,13 @@ class DareSubmissionsController < ApplicationController
   def transfer_karma
     @dare = Dare.find_by(id: dare_submission_params[:dare_id])
     @dare_submission = DareSubmission.find_by(id: dare_submission_params[:dare_submission_id])
+    @dare_submission_user = User.find_by(id: @dare_submission.user_id)
     if user_signed_in?
-      @dare_submission.user.karma_points = @dare_submission.user.karma_points + @dare.karma_offer
-      flash[:success] = "Karma rewarded!"
+      @dare_submission_user.karma_points = @dare_submission_user.karma_points + @dare.karma_offer
+      if @dare_submission_user.save
+        flash[:success] = "Karma rewarded!"
+      end
+      redirect_to dare_path(@dare_submission.dare.id)
     end
   end
   
