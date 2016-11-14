@@ -6,7 +6,7 @@ class Dare < ApplicationRecord
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 140 }
-  validates :karma_offer, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: :max_karma_points}
+  validates :karma_offer, presence: true, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: :max_karma_points}
   
   
   after_create :transfer_points
