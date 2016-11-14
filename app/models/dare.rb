@@ -9,7 +9,7 @@ class Dare < ApplicationRecord
   validates :karma_offer, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: :max_karma_points}
   
   
-  #after_create :transfer_points
+  after_create :transfer_points
 
   
   def add_karma(points)
