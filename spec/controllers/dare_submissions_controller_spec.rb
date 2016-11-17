@@ -58,7 +58,8 @@ RSpec.describe DareSubmissionsController, type: :controller do
   describe 'POST new_dare_submission' do
     context "valid user" do
       before do
-        sign_in_user
+        @user = FactoryGirl.create(:user)
+        sign_in @user
       end   
       
       context "with invalid attributes" do
@@ -106,6 +107,44 @@ RSpec.describe DareSubmissionsController, type: :controller do
           
         end
       end
+      
+      
+      context 'winner already selected' do
+        before do
+          
+          
+          @dare = FactoryGirl.create(:dare, user_id: @user.id)
+          @user2 = FactoryGirl.create(:user2)
+          @dare_submission = FactoryGirl.create(:dare_submission, user_id: @user2.id, dare_id: @dare.id)
+          @dare.winning_submission_id = @dare_submission.id
+          @dare.save
+          
+        end
+        
+        it "does not save the new post" do
+          expect{
+            post :create,
+              params: { dare_submission:{  
+                          content:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                          description: "MyText",
+                          dare_id: @dare.id} }
+          }.to change(DareSubmission,:count).by(0)
+        end
+        
+        it "renders the dare's page" do
+          post :create,
+            params: { dare_submission:{  
+                          content:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                          description: "MyText",
+                          dare_id: @dare.id} }
+          expect(response).to redirect_to dare_path(@dare.id)
+          assert_equal flash.empty?, false
+          expect(flash[:danger]).to match("Submissions are Closed! Submission not created!")
+          
+        end
+        
+      end
+      
     end
     
     context "not logged in" do
@@ -244,8 +283,6 @@ RSpec.describe DareSubmissionsController, type: :controller do
   
   
   describe 'POST dare_submissions_transfer_karma' do
-    
-    
     
     context 'winner not selected yet' do
       before do
