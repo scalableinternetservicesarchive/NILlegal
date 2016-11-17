@@ -286,8 +286,41 @@ RSpec.describe DareSubmissionsController, type: :controller do
             }
           assert_equal @dare_submission.user.karma_points + @dare.karma_offer, @user2.reload.karma_points
         end
-      
       end
+      
+      context "incorrect user signed in" do
+        before do
+          sign_in @user2
+        end
+        it 'redirects with danger flash' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+            expect(response).to redirect_to dare_path(@dare.id)
+            assert_equal flash.empty?, false
+            expect(flash[:danger]).to match("No Karma awarded!")
+        end
+        
+        it 'doe not update dare.winning_submission_id' do
+          assert_equal nil, @dare.winning_submission_id
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+          assert_equal nil, @dare.reload.winning_submission_id
+        end
+        
+        it 'user of dare_submission karma points do not change' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+          assert_equal @dare_submission.user.karma_points, @user2.reload.karma_points
+        end
+      end
+      
+      
     end
     
     context 'winner selected already' do
