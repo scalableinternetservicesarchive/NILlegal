@@ -69,7 +69,6 @@ describe DaresController do
         end
         
         it "renders the index method" do
-          get :new
           post :create,
             params: { dare: FactoryGirl.attributes_for(:dare) }
           expect(response).to redirect_to show_dare_list_path
@@ -201,10 +200,9 @@ describe DaresController do
         assert_select 'h3', "No Dares Posted Yet"
       end
     end
-    
-   
-    
-    
-    
   end
+  
+  
+  
+  
 end
