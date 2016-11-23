@@ -13,12 +13,12 @@ class User < ApplicationRecord
          
   def add_karma(points)
     self.karma_points += points
-    self.save
+    self.save!
   end
   
   def remove_karma(points)
     self.karma_points -= points
-    self.save
+    self.save!
   end
          
   

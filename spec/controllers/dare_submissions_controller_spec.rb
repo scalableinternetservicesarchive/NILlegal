@@ -58,7 +58,8 @@ RSpec.describe DareSubmissionsController, type: :controller do
   describe 'POST new_dare_submission' do
     context "valid user" do
       before do
-        sign_in_user
+        @user = FactoryGirl.create(:user)
+        sign_in @user
       end   
       
       context "with invalid attributes" do
@@ -106,6 +107,44 @@ RSpec.describe DareSubmissionsController, type: :controller do
           
         end
       end
+      
+      
+      context 'winner already selected' do
+        before do
+          
+          
+          @dare = FactoryGirl.create(:dare, user_id: @user.id)
+          @user2 = FactoryGirl.create(:user2)
+          @dare_submission = FactoryGirl.create(:dare_submission, user_id: @user2.id, dare_id: @dare.id)
+          @dare.winning_submission_id = @dare_submission.id
+          @dare.save
+          
+        end
+        
+        it "does not save the new post" do
+          expect{
+            post :create,
+              params: { dare_submission:{  
+                          content:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                          description: "MyText",
+                          dare_id: @dare.id} }
+          }.to change(DareSubmission,:count).by(0)
+        end
+        
+        it "renders the dare's page" do
+          post :create,
+            params: { dare_submission:{  
+                          content:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                          description: "MyText",
+                          dare_id: @dare.id} }
+          expect(response).to redirect_to dare_path(@dare.id)
+          assert_equal flash.empty?, false
+          expect(flash[:danger]).to match("Submissions are Closed! Submission not created!")
+          
+        end
+        
+      end
+      
     end
     
     context "not logged in" do
@@ -243,6 +282,124 @@ RSpec.describe DareSubmissionsController, type: :controller do
   end
   
   
+  describe 'POST dare_submissions_transfer_karma' do
+    
+    context 'winner not selected yet' do
+      before do
+        @user = FactoryGirl.create(:user)
+        
+        @dare = FactoryGirl.create(:dare, user_id: @user.id)
+        @user2 = FactoryGirl.create(:user2)
+        @dare_submission = FactoryGirl.create(:dare_submission, user_id: @user2.id, dare_id: @dare.id)
+      end
+      
+      context "correct user signed in" do
+        before do
+          sign_in @user
+        end
+        it 'redirects with success flash' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+            expect(response).to redirect_to dare_path(@dare.id)
+            assert_equal flash.empty?, false
+            expect(flash[:success]).to match("Karma rewarded!")
+        end
+        
+        it 'updates dare.winning_submission_id' do
+          assert_equal nil, @dare.winning_submission_id
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+          assert_equal @dare_submission.id, @dare.reload.winning_submission_id
+        end
+        
+        it 'gives user of dare_submission karma points' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+          assert_equal @dare_submission.user.karma_points + @dare.karma_offer, @user2.reload.karma_points
+        end
+      end
+      
+      context "incorrect user signed in" do
+        before do
+          sign_in @user2
+        end
+        it 'redirects with danger flash' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+            expect(response).to redirect_to dare_path(@dare.id)
+            assert_equal flash.empty?, false
+            expect(flash[:danger]).to match("No Karma awarded!")
+        end
+        
+        it 'doe not update dare.winning_submission_id' do
+          assert_equal nil, @dare.winning_submission_id
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+          assert_equal nil, @dare.reload.winning_submission_id
+        end
+        
+        it 'user of dare_submission karma points do not change' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+          assert_equal @dare_submission.user.karma_points, @user2.reload.karma_points
+        end
+      end
+      
+      
+    end
+    
+    context 'winner selected already' do
+      before do
+        @user = FactoryGirl.create(:user)
+        
+        @dare = FactoryGirl.create(:dare, user_id: @user.id)
+        @user2 = FactoryGirl.create(:user2)
+        @dare_submission = FactoryGirl.create(:dare_submission, user_id: @user2.id, dare_id: @dare.id)
+        @dare.winning_submission_id = @dare_submission.id
+        @dare.save
+      end
+      
+      context "correct user signed in" do
+        before do
+          sign_in @user
+        end
+        it 'redirects with danger flash' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+            expect(response).to redirect_to dare_path(@dare.id)
+            assert_equal flash.empty?, false
+            expect(flash[:danger]).to match("No Karma awarded!")
+        end
+        
+      
+        
+        it 'karma points stay the same' do
+          post :transfer_karma,
+            params: {
+              dare_submission:{id: @dare_submission.id, dare_id: @dare.id}
+            }
+          assert_equal @dare_submission.user.karma_points, @user2.reload.karma_points
+        end
+      
+      end
+    end
+    
+    
+  end
   
   
   

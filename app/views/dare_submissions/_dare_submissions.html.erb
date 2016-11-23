@@ -1,5 +1,5 @@
 <% dare_submissions.each do |dare_submission| %>
-  <div id="dare_submission-<%= dare_submission.id %>" class="dare-submission-box">
+  <div id="dare_submission-<%= dare_submission.id %>" class="dare-submission-box <% if (dare_submission.id == dare_submission.dare.winning_submission_id) %>winner<% end %>">
     <div class="row">
       <div class="col-md-4"> 
         <%= embed(dare_submission.content) %>
@@ -24,11 +24,15 @@
                                       submission_like: { dare_submission_id: dare_submission.id } }, 
                                     {class: 'btn btn-primary btn-sm', method: :post }) %>
         </span>
-        <% if (current_user == dare_submission.dare.user) %>
+        <% if (current_user == dare_submission.dare.user && !dare_submission.dare.winner_selected) %>
             <%= link_to("Reward karma!", { controller: "dare_submissions", action: "transfer_karma", 
                                       dare_submission: { id: dare_submission.id, dare_id: dare_submission.dare_id }}, 
                                     {class: 'btn btn-primary btn-sm', method: :post }) %>
         <% end %>
+        
+        <% if (dare_submission.id == dare_submission.dare.winning_submission_id) %>WINNER<% end %>
+                                    
+
       </div>
     </div>
   </div>

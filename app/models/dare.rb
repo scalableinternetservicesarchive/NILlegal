@@ -11,6 +11,10 @@ class Dare < ApplicationRecord
   
   after_create :transfer_points
 
+  def winner_selected
+    return !self.winning_submission_id.nil?
+  end
+  
   
   def add_karma(points)
     self.karma_offer += points
