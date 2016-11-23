@@ -1,0 +1,13 @@
+<% header "Top Ten Users" %>
+<div class="row">
+ 
+    <% @users.each do |user| %>
+      <div class="panel panel-default panel-section-gray">
+        <%= render partial: 'users/registrations/user_summary', locals: { user: user } %>
+        <span class="user">Visit <%= link_to "#{user.name}", user_profile_path(:id => user.id) %>'s Profile</span>
+      </div>
+    <% end %>
+ 
+  
+</div>
+
