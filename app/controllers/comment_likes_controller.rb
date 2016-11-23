@@ -1,5 +1,6 @@
 class CommentLikesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
+  skip_before_action :verify_authenticity_token
   
   def create
     @comment_like = current_user.comment_likes.build(like_params)

@@ -1,5 +1,6 @@
 class DaresController < ApplicationController
   before_action :logged_in_user, only: [:new, :create]
+  skip_before_action :verify_authenticity_token
 
   def index
     if (params[:search])

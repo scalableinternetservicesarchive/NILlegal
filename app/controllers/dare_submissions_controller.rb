@@ -1,6 +1,7 @@
 class DareSubmissionsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
+  skip_before_action :verify_authenticity_token
   
   def create
     @dare_submission = current_user.dare_submissions.build(dare_submission_params)
