@@ -14,7 +14,7 @@
 
 
   <load>
-    <arrivalphase phase="1" duration="10" unit="second">
+    <arrivalphase phase="1" duration="20" unit="second">
       <users arrivalrate="1" unit="second"></users>
     </arrivalphase>
     <!-- <arrivalphase phase="2" duration="10" unit="second">
@@ -72,17 +72,28 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- visit the dare form to post a new dare.  -->
-      <!-- <request>
+      <request>
         <http url='/dares/new' version='1.1' method='GET'></http>
-      </request> -->
+      </request>
 
       <!-- user is filling out new dare form -->
-      <!-- <thinktime value="2" random="true"></thinktime> -->
+      <thinktime value="2" random="true"></thinktime>
 
       <!-- create a random number to make a unique dare title -->
-<!--       <setdynvars sourcetype="random_number" start="1000" end="9999999">
-        <var name="title" />
-      </setdynvars> -->
+      <setdynvars sourcetype="random_number" start="1000" end="9999999">
+        <var name="dare_title" />
+      </setdynvars>
+
+      <!-- post a new dare -->
+      <request subst="true">
+        <http
+          url='/dares'
+          version='1.1'
+          method='POST'
+          contents='dare%5Btitle%5D=%%_dare_title%%&amp;dare%5Bkarma_offer%5D=3&amp;dare%5Bdescription%5D=some+dare+description&amp;commit=Post+Dare'>
+        </http>
+      </request>
+
     </session>
   </sessions>
 </tsung>
