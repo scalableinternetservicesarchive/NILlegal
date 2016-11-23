@@ -38,8 +38,9 @@ describe DaresController do
   describe 'POST new_dare' do
     context "valid user" do
       before do
-        sign_in_user
-        get :new
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+       
       end   
       
       context "with invalid attributes" do
@@ -68,13 +69,20 @@ describe DaresController do
         end
         
         it "renders the index method" do
-          get :new
           post :create,
             params: { dare: FactoryGirl.attributes_for(:dare) }
           expect(response).to redirect_to show_dare_list_path
           assert_equal flash.empty?, false
           expect(flash[:success]).to match("Dare created!")
         end
+        
+        it "removes karma from user posting" do
+            post :create,
+              params: { dare: FactoryGirl.attributes_for(:dare) }
+            assert_equal (@user.karma_points - (FactoryGirl.attributes_for(:dare))[:karma_offer]), @user.reload.karma_points
+        end
+        
+        
       end
     end
     
@@ -132,4 +140,69 @@ describe DaresController do
       end
     end
   end
+  
+  
+  describe 'GET show_dare_list' do
+    before do
+      get :index
+    end
+    
+    
+    
+    it 'routes to dares#index' do
+        expect(:get => show_dare_list_path).to route_to(
+          :controller => "dares",
+          :action => "index"
+        )
+    end
+
+    it 'returns 200 OK' do
+      assert_response :success
+    end
+
+    it 'renders correct view' do
+      assert_template :index
+    end
+    
+    
+    context 'With a dare saved' do
+      before do
+        @user = FactoryGirl.create(:user)
+        @dare = FactoryGirl.create(:dare, user_id: @user.id)
+        get :index
+      end
+      it 'displays the dare' do
+        get :index
+        assert_select 'a[href=?]', dare_path(@dare.id)
+        #assert_select 'h3', "No Dares Posted Yet"
+        #assert_select '#dare-description', @dare.description
+      end
+      
+      it 'displays dare with valid search' do
+        get :index,
+          params: {search: "Test"}
+        assert_select 'a[href=?]', dare_path(@dare.id)
+        #assert_select 'h3', "No Dares Posted Yet"
+        #assert_select '#dare-description', @dare.description
+      end
+      
+      it 'displays no dares' do
+        get :index,
+          params: {search: "Nonexistent"}
+        assert_select 'h3', "No Dares Posted Yet"
+      end
+      
+    end
+    
+    context 'With no dares saved' do
+      it 'displays no dares' do
+        get :index
+        assert_select 'h3', "No Dares Posted Yet"
+      end
+    end
+  end
+  
+  
+  
+  
 end
