@@ -38,8 +38,9 @@ describe DaresController do
   describe 'POST new_dare' do
     context "valid user" do
       before do
-        sign_in_user
-        get :new
+        @user = FactoryGirl.create(:user)
+        sign_in @user
+       
       end   
       
       context "with invalid attributes" do
@@ -68,13 +69,20 @@ describe DaresController do
         end
         
         it "renders the index method" do
-          get :new
           post :create,
             params: { dare: FactoryGirl.attributes_for(:dare) }
           expect(response).to redirect_to show_dare_list_path
           assert_equal flash.empty?, false
           expect(flash[:success]).to match("Dare created!")
         end
+        
+        it "removes karma from user posting" do
+            post :create,
+              params: { dare: FactoryGirl.attributes_for(:dare) }
+            assert_equal (@user.karma_points - (FactoryGirl.attributes_for(:dare))[:karma_offer]), @user.reload.karma_points
+        end
+        
+        
       end
     end
     
@@ -192,10 +200,9 @@ describe DaresController do
         assert_select 'h3', "No Dares Posted Yet"
       end
     end
-    
-   
-    
-    
-    
   end
+  
+  
+  
+  
 end

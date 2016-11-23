@@ -9,4 +9,7 @@ class DareSubmission < ApplicationRecord
                       format: { with: VALID_YOUTUBE_REGEX }
   validates :description, presence: true
   
+  
+  
+  
 end

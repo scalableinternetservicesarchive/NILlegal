@@ -12,6 +12,11 @@ class DaresController < ApplicationController
   def create
     @dare = current_user.dares.build(dare_params)
     if @dare.save
+    # if @dare.valid?
+    #   Dare.transaction do
+    #     @dare.save
+    #     @dare.transfer_points
+    #   end
       flash[:success] = "Dare created!"
       redirect_to show_dare_list_path
     else
@@ -35,6 +40,7 @@ class DaresController < ApplicationController
     end
     @submissions = @dare.dare_submissions
   end
+
   
   private
 

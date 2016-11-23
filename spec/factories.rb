@@ -41,6 +41,7 @@ FactoryGirl.define do
     title "Dare test"
     description "This is a test"
     association :user, factory: :user2
+    karma_offer 5
   end
   
   factory :invalid_dare, parent: :dare do
