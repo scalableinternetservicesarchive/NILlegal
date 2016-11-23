@@ -86,12 +86,18 @@
 
       <!-- post a new dare -->
       <request subst="true">
+        <dyn_variable name="posted_dare_id" re="[Ll]ocation: http://.*/dares/(.*)\r"/>
         <http
           url='/dares'
           version='1.1'
           method='POST'
           contents='dare%5Btitle%5D=%%_dare_title%%&amp;dare%5Bkarma_offer%5D=3&amp;dare%5Bdescription%5D=some+dare+description&amp;commit=Post+Dare'>
         </http>
+      </request>
+
+      <!-- visit the dare they just posted -->
+      <request subst="true">
+        <http url='/dares/%%_posted_dare_id%%' version='1.1' method='GET'></http>
       </request>
 
     </session>
