@@ -115,7 +115,7 @@
       <!-- visit submission page for the dare -->
       <request subst="true">
         <http
-          url='/dare_submissions/new?dare_submission%5Bdare_id%5D=%%_posted_dare_id%%'
+          url='/dare_submissions/new?dare_submission%5Bdare_id%5D=%%_random_dare_id%%'
           version='1.1'
           method='GET'>
         </http>
@@ -130,7 +130,7 @@
           url='/dare_submissions'
           version='1.1'
           method='POST'
-          contents='dare_submission%5Bcontent%5D=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DoHmvI76XciU&amp;dare_submission%5Bdescription%5D=This+is+the+best+video%21&amp;dare_submission%5Bdare_id%5D=%%_posted_dare_id%%&amp;commit=Post+Dare+Submission'>
+          contents='dare_submission%5Bcontent%5D=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DoHmvI76XciU&amp;dare_submission%5Bdescription%5D=This+is+the+best+video%21&amp;dare_submission%5Bdare_id%5D=%%_random_dare_id%%&amp;commit=Post+Dare+Submission'>
         </http>
       </request>
 
@@ -140,7 +140,7 @@
           url='/comments'
           version='1.1'
           method='POST'
-          contents='comment%5Bbody%5D=some+text+for+comment&amp;comment%5Bdare_id%5D=%%_postsed_dare_id%%&amp;commit=Comment'>
+          contents='comment%5Bbody%5D=some+text+for+comment&amp;comment%5Bdare_id%5D=%%_random_dare_id%%&amp;commit=Comment'>
         </http>
       </request>
 
