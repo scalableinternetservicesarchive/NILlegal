@@ -143,6 +143,18 @@
           contents='comment%5Bbody%5D=some+text+for+comment&amp;comment%5Bdare_id%5D=%%_postsed_dare_id%%&amp;commit=Comment'>
         </http>
       </request>
+
+      <!-- visit leaderboard -->
+      <request subst="true">
+        <http
+          url='/leaderboard'
+          version='1.1'
+          method='GET'>
+        </http>
+      </request>
+
+      <!-- user is browsing leaderboard -->
+      <thinktime value="2" random="true"></thinktime>
     </session>
   </sessions>
 </tsung>
