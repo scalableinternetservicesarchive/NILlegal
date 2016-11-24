@@ -14,13 +14,13 @@
 
 
   <load>
-    <arrivalphase phase="1" duration="50" unit="second">
+    <arrivalphase phase="1" duration="15" unit="second">
       <users arrivalrate="1" unit="second"></users>
     </arrivalphase>
-    <!-- <arrivalphase phase="2" duration="10" unit="second">
+    <!-- <arrivalphase phase="2" duration="15" unit="second">
       <users arrivalrate="2" unit="second"></users>
-    </arrivalphase>
-    <arrivalphase phase="3" duration="10" unit="second">
+    </arrivalphase> -->
+    <!-- <arrivalphase phase="3" duration="10" unit="second">
       <users arrivalrate="4" unit="second"></users>
     </arrivalphase> -->
   </load>
@@ -122,6 +122,14 @@
         </http>
       </request>
 
+      <request subst="true">
+        <http
+          url='/comments'
+          version='1.1'
+          method='POST'
+          contents='comment%5Bbody%5D=some+text+for+comment&amp;comment%5Bdare_id%5D=%%_postsed_dare_id%%&amp;commit=Comment'>
+        </http>
+      </request>
     </session>
   </sessions>
 </tsung>
