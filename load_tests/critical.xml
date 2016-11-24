@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-35-162-254-59.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-35-160-7-217.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -86,7 +86,6 @@
 
       <!-- post a new dare -->
       <request subst="true">
-        <dyn_variable name="posted_dare_id" re="[Ll]ocation: http://.*/dares/(.*)\r"/>
         <http
           url='/dares'
           version='1.1'
@@ -95,41 +94,54 @@
         </http>
       </request>
 
-      <!-- visit the dare they just posted -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <setdynvars sourcetype="random_number" start="1" end="50">
+        <var name="random_dare_id" />
+      </setdynvars>
+
+      <!-- visit a dare -->
       <request subst="true">
-        <http url='/dares/%%_posted_dare_id%%' version='1.1' method='GET'></http>
+        <http url='/dares/%%_random_dare_id%%' version='1.1' method='GET'></http>
       </request>
 
+      <!-- debug print your dynamic variables  -->
+      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump" />
+      </setdynvars>
+
       <!-- visit submission page for the dare -->
-      <request subst="true">
+      <!-- <request subst="true">
         <http
           url='/dare_submissions/new?dare_submission%5Bdare_id%5D=%%_posted_dare_id%%'
           version='1.1'
           method='GET'>
         </http>
-      </request>
+      </request> -->
 
       <!-- user is filling out submission form -->
-      <thinktime value="2" random="true"></thinktime>
+      <!-- <thinktime value="2" random="true"></thinktime> -->
 
       <!-- make a submission to the dare -->
-      <request subst="true">
+      <!-- <request subst="true">
         <http
           url='/dare_submissions'
           version='1.1'
           method='POST'
           contents='dare_submission%5Bcontent%5D=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DoHmvI76XciU&amp;dare_submission%5Bdescription%5D=This+is+the+best+video%21&amp;dare_submission%5Bdare_id%5D=%%_posted_dare_id%%&amp;commit=Post+Dare+Submission'>
         </http>
-      </request>
+      </request> -->
 
-      <request subst="true">
+<!--       <request subst="true">
         <http
           url='/comments'
           version='1.1'
           method='POST'
           contents='comment%5Bbody%5D=some+text+for+comment&amp;comment%5Bdare_id%5D=%%_postsed_dare_id%%&amp;commit=Comment'>
         </http>
-      </request>
+      </request> -->
     </session>
   </sessions>
 </tsung>
