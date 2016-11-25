@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-35-164-88-86.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-35-163-148-177.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -112,11 +112,11 @@
       </request>
 
       <!-- debug print your dynamic variables  -->
-      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+      <!-- <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
         io:format([126, $p, 126, $n, 126, $n], [DynVars]),
         ok end.">
         <var name="dump" />
-      </setdynvars>
+      </setdynvars> -->
 
       <!-- visit submission page for the dare -->
       <request subst="true">
