@@ -112,11 +112,11 @@
       </request>
 
       <!-- debug print your dynamic variables  -->
-      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+      <!-- <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
         io:format([126, $p, 126, $n, 126, $n], [DynVars]),
         ok end.">
         <var name="dump" />
-      </setdynvars>
+      </setdynvars> -->
 
       <!-- visit submission page for the dare -->
       <request subst="true">
