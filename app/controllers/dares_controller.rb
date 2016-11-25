@@ -6,7 +6,9 @@ class DaresController < ApplicationController
     if (params[:search])
       @dares = Dare.where("title like ?", "%#{params[:search]}%")
     else
-      @dares = Dare.all
+      @dares = Dare.includes(:dare_submissions).
+                    includes(:comments).
+                    includes(:user).all
     end
   end
 
