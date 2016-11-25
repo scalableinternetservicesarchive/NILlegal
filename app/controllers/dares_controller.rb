@@ -35,7 +35,10 @@ class DaresController < ApplicationController
   end
   
   def show
-    @dare = Dare.find_by(id: params[:id])
+    @dare = Dare.includes(:comments).
+                 includes(:dare_submissions).
+                 includes(:user).
+                 find_by(id: params[:id])
     @comments = @dare.comments
     if user_signed_in?
       @comment = current_user.comments.build if user_signed_in?

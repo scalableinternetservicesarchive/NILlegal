@@ -19,7 +19,7 @@
 
 <div class="panel panel-default panel-section-gray">
   <% if @dare.dare_submissions.any? %>
-    <h3>Submissions (<%= @dare.dare_submissions.count %>)</h3>
+    <h3>Submissions (<%= @dare.dare_submissions.size %>)</h3>
     <div class="dare_submissions">
       <%= render partial: "dare_submissions/dare_submissions", locals: { dare_submissions: @dare.dare_submissions }%>
     </div>
@@ -30,7 +30,7 @@
 
 <div class="panel panel-default panel-section-gray">
   <% if @comments.any? %>
-    <h3>Comments (<%= @comments.count %>)</h3>
+    <h3>Comments (<%= @comments.size %>)</h3>
   <% end %>
   <% if user_signed_in? %>
     <%= render partial: "comments/comment_form" %>
