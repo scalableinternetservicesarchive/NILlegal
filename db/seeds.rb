@@ -18,8 +18,12 @@ user2 = User.create!(name:  "Example User Two",
              password_confirmation: "foobar")
              
              
-dare = user1.dares.create(title: "Test", description: "Test dare", karma_offer: 100)
+dare = user1.dares.create(title: "Test", description: "Test dare", karma_offer: 20)
 
 dare_sub = dare.dare_submissions.build(content: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", description: "Get Rick Rolled")
 
 user2.dare_submissions << dare_sub
+
+50.times do |i|
+  user1.dares.create(title: "Dare #{i}", description: "Test dare", karma_offer: 1)
+end
