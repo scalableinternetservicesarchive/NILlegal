@@ -1,21 +1,23 @@
 <% dares.each do |dare| %>
-  <div id="dare-<%= dare.id %>" class="dare-summary">
-    <span class="title">
-      <strong><%= link_to dare.title, dare_path(id: dare.id) %></strong>
-    </span><br>
-    <div class="row">
-      <div class="col-md-8 col-sm-8">
-        <p class="karma-offer">Karma offer: <strong><%= dare.karma_offer %></strong></p>
-        <p class="description text-muted"><%= dare.description %></p>
-        <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
-        <span class="timestamp text-muted">
-          posted <%= time_ago_in_words(dare.created_at) %> ago.
-        </span>
-      </div>
-      <div class="col-md-4 col-sm-4">
-        <span class="comments-count"><%= dare.dare_submissions.count %> submissions</span><br>
-        <span class="comments-count"><%= dare.comments.count %> comments</span>
+  <% cache(cache_key_for_dare(dare)) do %>
+    <div id="dare-<%= dare.id %>" class="dare-summary">
+      <span class="title">
+        <strong><%= link_to dare.title, dare_path(id: dare.id) %></strong>
+      </span><br>
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <p class="karma-offer">Karma offer: <strong><%= dare.karma_offer %></strong></p>
+          <p class="description text-muted"><%= dare.description %></p>
+          <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
+          <span class="timestamp text-muted">
+            posted <%= time_ago_in_words(dare.created_at) %> ago.
+          </span>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <span class="comments-count"><%= dare.dare_submissions.count %> submissions</span><br>
+          <span class="comments-count"><%= dare.comments.count %> comments</span>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
