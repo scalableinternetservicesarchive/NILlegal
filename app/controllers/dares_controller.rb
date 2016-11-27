@@ -3,10 +3,12 @@ class DaresController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    if (params[:search])
-      @dares = Dare.where("title like ?", "%#{params[:search]}%")
-    else
-      @dares = Dare.all
+    if stale?(:etag => [Dare.all, Comment.all, DareSubmission.all], :last_modified => 1.minutes.ago)
+      if (params[:search])
+        @dares = Dare.where("title like ?", "%#{params[:search]}%")
+      else
+        @dares = Dare.all
+      end
     end
   end
 
@@ -33,13 +35,15 @@ class DaresController < ApplicationController
   end
   
   def show
-    @dare = Dare.find_by(id: params[:id])
-    @comments = @dare.comments
-    if user_signed_in?
-      @comment = current_user.comments.build if user_signed_in?
-      @comment.dare_id = @dare.id
-    end
-    @submissions = @dare.dare_submissions
+      @dare = Dare.find_by(id: params[:id])
+      if stale?(:etag => [@dare, @dare.comments, @dare.dare_submissions ], :last_modified => 1.minutes.ago)
+        @comments = @dare.comments
+        if user_signed_in?
+          @comment = current_user.comments.build if user_signed_in?
+          @comment.dare_id = @dare.id
+        end
+        @submissions = @dare.dare_submissions
+      end
   end
 
   
