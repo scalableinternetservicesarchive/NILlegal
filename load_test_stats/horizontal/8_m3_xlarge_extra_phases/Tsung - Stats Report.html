@@ -1,0 +1,259 @@
+
+<!-- saved from url=(0047)http://35.164.186.128/20161127-0721/report.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Tsung - Stats Report </title>
+	
+	<link rel="Index" href="http://35.164.186.128/">
+    <script type="text/javascript" src="./Tsung - Stats Report_files/dygraph-combined.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./Tsung - Stats Report_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Tsung - Stats Report_files/dashboard.css" rel="stylesheet">
+    <link href="./Tsung - Stats Report_files/docs.min.css" rel="stylesheet">
+
+  </head>
+<body>
+    <script src="./Tsung - Stats Report_files/jquery.min.js"></script>
+    <script src="./Tsung - Stats Report_files/bootstrap.min.js"></script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://35.164.186.128/20161127-0721/report.html#">Tsung <!-- SUBTITLE --></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://35.164.186.128/es/ts_web:status">Status</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/report.html">Reports</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/graph.html">Graphs</a></li>
+            <li><a href="http://35.164.186.128/es/ts_web:logs">Logs</a></li>
+            <li><a href="http://35.164.186.128/es/ts_web:stop">Stop</a></li>
+            <!-- <li><a href="critical.xml">Config</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="http://35.164.186.128/20161127-0721/report.html#stats">Main statistics</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/report.html#transaction">Transactions</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/report.html#network">Network Throughput</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/report.html#count">Counters</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/report.html#os_mon">Server monitoring</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/report.html#http_status">HTTP status</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="http://35.164.186.128/20161127-0721/graph.html#response_time">Response times</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/graph.html#throughput">Throughput graphs</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/graph.html#users">Simultaneous Users</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/graph.html#os_mon">Server monitoring</a></li>
+            <li><a href="http://35.164.186.128/20161127-0721/graph.html#http_status">HTTP status</a></li>
+          </ul>
+       </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+<div class="row placeholders">
+<!-- tsung_stats_duration -->
+</div>
+
+
+
+ <h3 id="stats" class="sub-header">Main Statistics</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tbody><tr><th class="stats">Name</th> <th class="stats">highest 10sec
+ mean</th> <th class="stats">lowest 10sec mean </th><th class="stats">Highest Rate</th><th class="stats">Mean Rate</th><th class="stats"> Mean </th><th class="stats">Count</th>
+  </tr>
+     <tr>
+		<td class="stats">connect</td>
+		<td class="stats">2.38 msec </td>
+		<td class="stats">1.60 msec</td>
+		<td class="stats">18.7 / sec</td>
+		<td class="stats">3.97 / sec</td>
+		<td class="stats">1.90 msec </td>
+		<td class="stats">1717 </td>
+     </tr>
+     <tr>
+		<td class="stats">page</td>
+		<td class="stats">44.57 sec </td>
+		<td class="stats">0.73 sec</td>
+		<td class="stats">141.9 / sec</td>
+		<td class="stats">27.90 / sec</td>
+		<td class="stats">12.73 sec </td>
+		<td class="stats">12019 </td>
+     </tr>
+     <tr>
+		<td class="stats">request</td>
+		<td class="stats">30.75 sec </td>
+		<td class="stats">0.36 sec</td>
+		<td class="stats">213.3 / sec</td>
+		<td class="stats">43.86 / sec</td>
+		<td class="stats">8.10 sec </td>
+		<td class="stats">18887 </td>
+     </tr>
+     <tr>
+		<td class="stats">session</td>
+		<td class="stats">3mn  56sec </td>
+		<td class="stats">14.21 sec</td>
+		<td class="stats">17.1 / sec</td>
+		<td class="stats">3.99 / sec</td>
+		<td class="stats">1mn  40sec </td>
+		<td class="stats">1717 </td>
+     </tr>
+ </tbody></table>
+ </div>
+
+ <h3 id="transaction" class="sub-header">Transactions Statistics</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tbody><tr><th class="stats">Name</th> <th class="stats">highest 10sec
+ mean</th> <th class="stats">lowest 10sec mean</th><th class="stats">Highest Rate</th><th class="stats">Mean Rate</th><th class="stats"> Mean </th><th class="stats">Count</th>
+  </tr>
+ </tbody></table>
+</div>
+
+ <h3 id="network" class="sub-header">Network Throughput</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tbody><tr><th class="stats">Name</th> <th class="stats">Highest Rate</th><th class="stats">Total</th>
+  </tr>
+     <tr>
+		<td class="stats">size_rcv</td>
+		<td class="stats">29.07 Mbits/sec</td>
+		<td class="stats">725.98 MB</td>
+     </tr>
+     <tr>
+		<td class="stats">size_sent</td>
+		<td class="stats">867.64 Kbits/sec</td>
+		<td class="stats">12.72 MB</td>
+     </tr>
+ </tbody></table>
+</div>
+
+ <h3 id="count" class="sub-header">Counters Statistics</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tbody><tr><th class="stats">Name</th> <th class="stats">Highest Rate</th><th class="stats">Mean Rate</th><th class="stats">Total number</th>
+  </tr>
+ </tbody></table>
+<p>
+ <table class="table table-striped table-bordered">
+  <tbody><tr><th class="stats">Name</th> <th class="stats">Max</th> </tr>
+     <tr>
+		<td class="stats">connected</td>
+		<td class="stats">1081 </td>
+     </tr>
+     <tr>
+		<td class="stats">finish_users_count</td>
+		<td class="stats">1717 </td>
+     </tr>
+     <tr>
+		<td class="stats">newphase</td>
+		<td class="stats">10 </td>
+     </tr>
+     <tr>
+		<td class="stats">users</td>
+		<td class="stats">1089 </td>
+     </tr>
+     <tr>
+		<td class="stats">users_count</td>
+		<td class="stats">1717 </td>
+     </tr>
+ </tbody></table>
+</p>
+</div>
+
+
+ <h3 id="os_mon" class="sub-header">Server monitoring</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tbody><tr><th class="stats">Name</th> <th class="stats">highest 10sec
+  mean</th><th class="stats">lowest 10sec mean</th>
+  </tr>
+     <tr>
+		<td class="stats">cpu:os_mon@tsung_controller@ip-172-31-3-69</td>
+		<td class="stats">5.62 %</td>
+		<td class="stats">0.25 %</td>
+     </tr>
+     <tr>
+		<td class="stats">freemem:os_mon@tsung_controller@ip-172-31-3-69</td>
+		<td class="stats">14392.63 MB</td>
+		<td class="stats">14249.50 MB</td>
+     </tr>
+     <tr>
+		<td class="stats">load:os_mon@tsung_controller@ip-172-31-3-69</td>
+		<td class="stats">0.68 </td>
+		<td class="stats">0.00 </td>
+     </tr>
+     <tr>
+		<td class="stats">recvpackets:os_mon@tsung_controller@ip-172-31-3-69</td>
+		<td class="stats">28565.00 / sec</td>
+		<td class="stats">69.00 / sec</td>
+     </tr>
+     <tr>
+		<td class="stats">sentpackets:os_mon@tsung_controller@ip-172-31-3-69</td>
+		<td class="stats">17489.00 / sec</td>
+		<td class="stats">52.00 / sec</td>
+     </tr>
+ </tbody></table>
+</div>
+
+
+ <h3 id="http_status" class="sub-header">HTTP return code </h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tbody><tr><th class="stats">Code</th>  <th class="stats">Highest Rate</th><th class="stats">Mean Rate</th><th class="stats">Total number</th>
+  </tr>
+     <tr>
+		<td class="stats">200</td>
+		<td class="stats">33.9 / sec</td>
+		<td class="stats">14.32 / sec</td>
+		<td class="stats">6177</td>
+     </tr>
+     <tr>
+		<td class="stats">302</td>
+		<td class="stats">21.8 / sec</td>
+		<td class="stats">8.40 / sec</td>
+		<td class="stats">3622</td>
+     </tr>
+     <tr>
+		<td class="stats">503</td>
+		<td class="stats">190 / sec</td>
+		<td class="stats">28.93 / sec</td>
+		<td class="stats">8390</td>
+     </tr>
+     <tr>
+		<td class="stats">504</td>
+		<td class="stats">12 / sec</td>
+		<td class="stats">3.49 / sec</td>
+		<td class="stats">698</td>
+     </tr>
+ </tbody></table>
+</div>
+<footer class="bs-docs-footer" role="contentinfo">
+  <ul class="bs-docs-footer-links muted">
+    <li>Tsung version 1.6.0</li>
+    <li><address>
+        Contact:   <a href="mailto:tsung-users@process-one.net">tsung-users@process-one.net</a>
+        </address>
+     </li>
+   </ul>
+</footer>
+ </div>
+ </div>
+</div>
+
+
+
+</body></html>
