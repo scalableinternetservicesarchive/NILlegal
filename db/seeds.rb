@@ -25,5 +25,5 @@ dare_sub = dare.dare_submissions.build(content: "https://www.youtube.com/watch?v
 user2.dare_submissions << dare_sub
 
 50.times do |i|
-  user1.dares.create(title: "Dare " + Random.rand(999999), description: "Test dare", karma_offer: 1)
+  user1.dares.create(title: "Dare #{Random.rand(999999)}", description: "Test dare", karma_offer: 1)
 end
