@@ -1,6 +1,6 @@
 module DaresHelper
   def cache_key_for_dare(dare)
-    "dare-#{dare.id}-#{dare.user.name}-#{dare.updated_at}-#{dare.comments.count}-#{dare.dare_submissions.count}-#{time_ago_in_words(dare.created_at)}"
+    "dare-#{dare.id}-#{dare.user.name}-#{dare.updated_at}-#{dare.comments.count}-#{dare.dare_submissions.count}"
   end
   
   def cache_key_for_dare_time(dare)
