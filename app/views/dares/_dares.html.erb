@@ -32,12 +32,12 @@
 
         <div class="col-md-4 col-sm-4">
 <% end %> 
-<% cache(cache_key_for_dare_count(dare)) do %>
+<% #cache(cache_key_for_dare_count(dare)) do %>
           <span class="comments-count"><%= dare.dare_submissions.count %> submissions</span><br>
           <span class="comments-count"><%= dare.comments.count %> comments</span>
         </div>
 
       </div>
     </div>
-<% end %> 
+<% #end %> 
 <% end %>
