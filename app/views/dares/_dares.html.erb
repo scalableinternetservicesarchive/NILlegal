@@ -1,43 +1,51 @@
 <% dares.each do |dare| %>
-<% cache(cache_key_for_dare(dare)+"-1") do %>
+<% cache(cache_key_for_dare(dare)) do %>
 
-    <div id="dare-<%= dare.id %>" class="dare-summary">
-      <span class="title">
-        <strong><%= link_to dare.title, dare_path(id: dare.id) %></strong>
-      </span><br>
-      <div class="row">
-        
-        
-        
-        <div class="col-md-8 col-sm-8">
-          <p class="karma-offer">Karma offer: <strong><%= dare.karma_offer %></strong></p>
-          <p class="description text-muted"><%= dare.description %></p>
-
-
-          <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
-
-
-
-          <span class="timestamp text-muted">
-<% end %>
-
-<% cache(cache_key_for_dare_time(dare)) do %>
-            posted <%= time_ago_in_words(dare.created_at) %> ago.
-<% end %>
-
-<% cache(cache_key_for_dare(dare)+"-2") do %>
-          </span>
-
+  <% cache(cache_key_for_dare_and_user(dare))  do %>
+  
+    <% cache(cache_key_for_dare_update(dare)) do %>
+        <div id="dare-<%= dare.id %>" class="dare-summary">
+          <span class="title">
+            <strong><%= link_to dare.title, dare_path(id: dare.id) %></strong>
+          </span><br>
+          <div class="row">
+            
+            
+            
+            <div class="col-md-8 col-sm-8">
+              <p class="karma-offer">Karma offer: <strong><%= dare.karma_offer %></strong></p>
+              <p class="description text-muted"><%= dare.description %></p>
+    
+    <% end %>
+    
+    <% cache(cache_key_for_dare_user(dare)) do %>
+              <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
+    <% end %>
+    
+    
+    
+              <span class="timestamp text-muted">
+  <% end %>
+  
+  <% cache(cache_key_for_dare_time(dare)) do %>
+              posted <%= time_ago_in_words(dare.created_at) %> ago.
+  <% end %>
+  
+  <% cache(cache_key_for_dare_static) do %>
+            </span>
+  
+          </div>
+  
+          <div class="col-md-4 col-sm-4">
+  <% end %> 
+  <% cache(cache_key_for_dare_count(dare)) do %>
+            <span class="comments-count"><%= dare.dare_submissions.count %> submissions</span><br>
+            <span class="comments-count"><%= dare.comments.count %> comments</span>
+          </div>
+  
         </div>
-
-        <div class="col-md-4 col-sm-4">
-<% end %> 
-<% #cache(cache_key_for_dare_count(dare)) do %>
-          <span class="comments-count"><%= dare.dare_submissions.count %> submissions</span><br>
-          <span class="comments-count"><%= dare.comments.count %> comments</span>
-        </div>
-
       </div>
-    </div>
-<% #end %> 
+  <% end %> 
+  
+<% end %>
 <% end %>

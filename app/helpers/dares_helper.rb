@@ -1,5 +1,9 @@
 module DaresHelper
   def cache_key_for_dare(dare)
+    "dare-#{dare.id}-#{dare.user.name}-#{dare.updated_at}-#{time_ago_in_words(dare.created_at)}-#{dare.comments.count}-#{dare.dare_submissions.count}"
+  end
+  
+  def cache_key_for_dare_and_user(dare)
     "dare-#{dare.id}-#{dare.user.name}-#{dare.updated_at}"
   end
   
@@ -17,6 +21,10 @@ module DaresHelper
   
   def cache_key_for_dare_count(dare)
     "dare_count-#{dare.id}-#{dare.comments.count}-#{dare.dare_submissions.count}"
+  end
+  
+  def cache_key_for_dare_static
+    "dare-static"
   end
   
   def cache_key_for_dare_table
