@@ -11,13 +11,13 @@
 
 <!--cache when string is not blank-->
   <% if params[:search].nil? || params[:search].blank? %>
-    <!--<% cache(cache_key_for_dare_table) do %>-->
+    <% #cache(cache_key_for_dare_table) do %>
       <% if @dares.any? %>
         <%= render partial: "dares/dares", locals: { dares: @dares } %>
       <% else %>
         <h3>No Dares Posted Yet</h3>
       <% end %>
-    <!--<% end %>-->
+    <% #end %>
   <% else %>
     <% if @dares.any? %>
       <%= render partial: "dares/dares", locals: { dares: @dares } %>
