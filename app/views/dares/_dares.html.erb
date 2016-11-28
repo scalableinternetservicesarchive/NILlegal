@@ -10,17 +10,17 @@
           <p class="karma-offer">Karma offer: <strong><%= dare.karma_offer %></strong></p>
           <p class="description text-muted"><%= dare.description %></p>
 <% #end %>
-  <% cache(cache_key_for_dare_user(dare)) do %>
+  <% #cache(cache_key_for_dare_user(dare)) do %>
           <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
-  <% end %>
-<% end %>
-<% cache(cache_key_for_dare_time(dare)) do %>
+  <% #end %>
+<% #end %>
+<% #cache(cache_key_for_dare_time(dare)) do %>
           <span class="timestamp text-muted">
             posted <%= time_ago_in_words(dare.created_at) %> ago.
           </span>
-<% end %>
+<% #end %>
         </div>
-<% cache(cache_key_for_dare_count(dare)) do %>
+<% #cache(cache_key_for_dare_count(dare)) do %>
         <div class="col-md-4 col-sm-4">
           <span class="comments-count"><%= dare.dare_submissions.count %> submissions</span><br>
           <span class="comments-count"><%= dare.comments.count %> comments</span>
