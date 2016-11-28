@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+  <HEAD><TITLE>Index of /20161128-1321/gnuplot_scripts/</TITLE></HEAD>
+  <BODY>
+    <H1>Index of /20161128-1321/gnuplot_scripts/</H1>
+<PRE>
+ <A HREF="?N=A">Name</A>                          <A HREF="?M=A">Last modified</A>         <A HREF="?S=A">Size</A>
+<HR>
+ <A HREF="..">Parent Directory</A>              2016/11/28 13:30      -
+ <A HREF="graphes-sentpackets.gplot">graphes-sentpackets.gplot</A>     2016/11/28 13:30      3391
+ <A HREF="graphes-recvpackets.gplot">graphes-recvpackets.gplot</A>     2016/11/28 13:30      3391
+ <A HREF="graphes-load.gplot">graphes-load.gplot</A>            2016/11/28 13:30      3167
+ <A HREF="graphes-freemem.gplot">graphes-freemem.gplot</A>         2016/11/28 13:30      3263
+ <A HREF="graphes-cpu.gplot">graphes-cpu.gplot</A>             2016/11/28 13:30      3135
+ <A HREF="graphes-Users_Arrival.gplot">graphes-Users_Arrival.g..</A>     2016/11/28 13:30      1814
+ <A HREF="graphes-Users.gplot">graphes-Users.gplot</A>           2016/11/28 13:30      1740
+ <A HREF="graphes-Transactions.gplot">graphes-Transactions.gp..</A>     2016/11/28 13:30      2745
+ <A HREF="graphes-Size.gplot">graphes-Size.gplot</A>            2016/11/28 13:30      1680
+ <A HREF="graphes-Session.gplot">graphes-Session.gplot</A>         2016/11/28 13:30      2563
+ <A HREF="graphes-Perfs.gplot">graphes-Perfs.gplot</A>           2016/11/28 13:30      3287
+ <A HREF="graphes-HTTP_CODE.gplot">graphes-HTTP_CODE.gplot</A>       2016/11/28 13:30      1750
+ <A HREF="graphes-Event.gplot">graphes-Event.gplot</A>           2016/11/28 13:30      1370
+</PRE><HR>    <ADDRESS>
+     WEBrick/1.3.1 (Ruby/2.0.0/2015-08-18)<BR>
+     at 35.164.185.89:80
+    </ADDRESS>
+  </BODY>
+</HTML>
