@@ -7,7 +7,7 @@
         </span>
         <p class="description"><%= comment.body %></p>
         <span class="timestamp text-muted">
-          posted <%= time_ago_in_words(comment.created_at) %> ago
+          posted <%= timeago(comment.created_at) %> 
         </span>
       </div>
       <div class="col-md-4">

@@ -14,7 +14,7 @@
             <%= link_to "Edit",  edit_dare_submission_path(:id => dare_submission.id), method: :get %>
           <% end %>
         </p>
-        <span class="text-muted">submitted <%= time_ago_in_words(dare_submission.created_at) %> ago.</span>
+        <span class="text-muted">submitted <%= timeago(dare_submission.created_at) %></span>
         <span class="number of likes pull-right">
           <%= dare_submission.submission_likes.count('user_id') %> likes
         </span>

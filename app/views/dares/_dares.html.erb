@@ -9,7 +9,7 @@
         <p class="description text-muted"><%= dare.description %></p>
         <span class="user"><%= link_to dare.user.name, user_profile_path(:id => dare.user.id) %></span>
         <span class="timestamp text-muted">
-          posted <%= time_ago_in_words(dare.created_at) %> ago.
+          posted <%= timeago(dare.created_at)%>.
         </span>
       </div>
       <div class="col-md-4 col-sm-4">
